@@ -8,7 +8,7 @@
   <meta property="og:title" content="TAMARA FASHION - فستان ميرال قطيفة طقم كامل 4 قطع">
   <meta property="og:description" content="دفا وأناقة في دارك هذا الشتاء. روب قطيفة ملكية مع حزام وربطة شعر وطوق شعر. توصيل 58 ولاية والدفع عند الاستلام.">
   <meta property="og:type" content="product">
-  <meta property="og:image" content="./images/miral_dress_main.jpg">
+  <meta property="og:image" content="./images/IMG_0106.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -168,7 +168,8 @@
     .main-image-wrapper {
       position: relative;
       width: 100%;
-      height: 480px;
+      height: auto;
+      min-height: 240px;
       max-height: 75vh;
       overflow: hidden;
       display: flex;
@@ -179,15 +180,17 @@
 
     @media (max-width: 640px) {
       .main-image-wrapper {
-        height: 380px;
+        min-height: 240px;
       }
     }
 
     .main-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      object-position: center;
       transition: opacity 0.3s ease;
     }
 
@@ -1155,9 +1158,18 @@
 
       // 7. صور المنتج (مسارات محلية أو روابط إنترنت)
       images: [
-        "./images/miral_dress_main.jpg",
-        "./images/miral_dress_details.jpg",
-        "./images/miral_dress_set.jpg"
+        "./images/IMG_0106.jpg",
+        "./images/IMG_0107.jpg",
+        "./images/IMG_0108.jpg",
+        "./images/IMG_0109.jpg.jpg",
+        "./images/IMG_0110.JPG",
+        "./images/IMG_0111.JPG",
+        "./images/IMG_0112.JPG",
+        "./images/IMG_0113.JPG",
+        "./images/IMG_0114.JPG",
+        "./images/IMG_0115.JPG",
+        "./images/IMG_0116.JPG",
+        "./images/IMG_0117.JPG"
       ]
     };
   </script>
@@ -1193,7 +1205,7 @@
       <section class="gallery-section" aria-label="معرض صور فستان ميرال">
         <div class="exclusive-badge">طقم كامل 4 قطع 👑</div>
         <div class="main-image-wrapper">
-          <img id="mainProductImage" src="./images/miral_dress_main.jpg" alt="فستان ميرال قطيفة طقم كامل 4 قطع" class="main-image">
+          <img id="mainProductImage" src="./images/IMG_0106.jpg" alt="فستان ميرال قطيفة طقم كامل 4 قطع" class="main-image">
           <button id="btnPrevImage" class="gallery-nav-btn gallery-prev" aria-label="الصورة السابقة">❮</button>
           <button id="btnNextImage" class="gallery-nav-btn gallery-next" aria-label="الصورة التالية">❯</button>
         </div>
@@ -1365,7 +1377,7 @@
         
         <!-- ملخص المنتج داخل النافذة -->
         <div class="order-item-summary">
-          <img id="modalProductThumb" src="./images/miral_dress_main.jpg" alt="فستان ميرال" class="order-item-thumb">
+          <img id="modalProductThumb" src="./images/IMG_0106.jpg" alt="فستان ميرال" class="order-item-thumb">
           <div>
             <div id="modalProductName" class="order-item-name">فستان ميرال قطيفة طقم كامل 4 قطع</div>
             <div class="order-item-meta">
