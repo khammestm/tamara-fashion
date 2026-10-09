@@ -6,24 +6,49 @@
  * مع الحماية الكاملة من السبام وتكرار الطلبات وتأمين الأسعار وحقن المعادلات.
  * 
  * المطور لـ: TAMARA FASHION
- * المنتوج: فستان ميرال قطيفة طقم كامل 4 قطع
+ * المنتوج: فستان ميرال قطيفة طقم كامل 3 قطع (بيج، عنابي، بلون كاسي)
+ * تفصيل ورشة تمارا في بوسعادة منذ 2020
  * =========================================================================
  */
 
 // إعدادات المتجر على السيرفر (لا يمكن للعميل أو المتصفح التلاعب بها)
 const SERVER_CONFIG = {
   SHEET_NAME: "Orders",
-  PRODUCT_NAME: "فستان ميرال قطيفة طقم كامل 4 قطع",
+  // معرف جدول Google Sheet (اختياري):
+  // - اتركه فارغًا "" إذا فتحت السكربت من داخل الشيت عبر: Extensions > Apps Script
+  // - أو ضع معرف الجدول (Spreadsheet ID) هنا إذا كان السكربت مستقلاً
+  SPREADSHEET_ID: "",
+  
+  PRODUCT_NAME: "فستان ميرال قطيفة طقم كامل 3 قطع",
   UNIT_PRICE: 4900, // السعر الثابت 4900 دج
   DELIVERY_FEES: {
     domicile: 700, // توصيل للمنزل: 700 دج
     yalidine: 550  // استلام من مكتب ياليدين: 550 دج
   },
   ALLOWED_SIZES: ["36", "38", "40", "42", "44", "46", "48", "50"],
+  ALLOWED_COLORS: ["بيج (Beige)", "عنابي (Bordeaux)", "بلون كاسي (Blanc Cassé)"],
   STATUS_OPTIONS: ["جديد", "مؤكد", "قيد التحضير", "تم الشحن", "تم التسليم", "ملغي"],
   DEFAULT_STATUS: "جديد",
   TIMEZONE: "Africa/Algiers"
 };
+
+/**
+ * دالة الحصول على ملف جدول Google Sheet المستهدف
+ */
+function getTargetSpreadsheet() {
+  if (SERVER_CONFIG.SPREADSHEET_ID && SERVER_CONFIG.SPREADSHEET_ID.trim() !== "") {
+    try {
+      return SpreadsheetApp.openById(SERVER_CONFIG.SPREADSHEET_ID.trim());
+    } catch (e) {
+      Logger.log("تعذر فتح الجدول بالمعرف المحدد: " + e.message);
+    }
+  }
+  
+  const active = SpreadsheetApp.getActiveSpreadsheet();
+  if (active) return active;
+  
+  throw new Error("لم يتم العثور على جدول Google Sheet. إذا كان السكربت مستقلاً، يرجى كتابة SPREADSHEET_ID في كائن SERVER_CONFIG أو فتح الشيت والضغط على Extensions > Apps Script.");
+}
 
 /**
  * دالة الإعداد التلقائي بضغطة زر واحدة (Run setupSheet)
@@ -31,14 +56,14 @@ const SERVER_CONFIG = {
  * وتعيين القوائم المنسدلة لحالة الطلب مع ألوان التمييز التلقائية.
  */
 function setupSheet() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const ss = getTargetSpreadsheet();
   let sheet = ss.getSheetByName(SERVER_CONFIG.SHEET_NAME);
   
   if (!sheet) {
     sheet = ss.insertSheet(SERVER_CONFIG.SHEET_NAME);
   }
   
-  // عناوين الأعمدة المطلوبة
+  // عناوين الأعمدة المطلوبة بالترتيب الدقيق
   const headers = [
     "Order ID",
     "Date/Time",
@@ -121,12 +146,21 @@ function setupSheet() {
 }
 
 /**
- * فحص الاتصال البسيط (GET Request) للتأكد من تشغيل الـ Web App
+ * فحص الاتصال البسيط (GET Request) أو استقبال الطلبات عبر GET
  */
 function doGet(e) {
+  // فحص ما إذا كان هناك طلب شراء مرسل عبر رابط GET (حل احتياطي قوي ومضمون)
+  if (e && e.parameter && (e.parameter.phone || e.parameter.fullName || e.parameter.city)) {
+    return handleOrderProcessing(e);
+  }
+  
+  // فحص الاتصال الصحي (Health Check)
   return createJsonResponse({
     status: "ok",
-    message: "TAMARA FASHION Order API is running."
+    success: true,
+    message: "TAMARA FASHION Order API is running perfectly.",
+    access: "Anyone (Public)",
+    timestamp: new Date().toISOString()
   });
 }
 
@@ -134,6 +168,13 @@ function doGet(e) {
  * استقبال ومعالجة طلبات الشراء الجديدة (POST Request)
  */
 function doPost(e) {
+  return handleOrderProcessing(e);
+}
+
+/**
+ * المعالج الرئيسي المشترك لحفظ الطلبات
+ */
+function handleOrderProcessing(e) {
   // استخدام LockService لضمان عدم تضارب المعرفات عند قدوم طلبين في نفس اللحظة
   const lock = LockService.getScriptLock();
   const hasLock = lock.tryLock(15000); // الانتظار حتى 15 ثانية
@@ -148,20 +189,23 @@ function doPost(e) {
   try {
     let data = {};
     
-    // استخراج البيانات سواء تم إرسالها بتنسيق JSON أو Form
-    if (e.postData && e.postData.contents) {
+    // استخراج البيانات سواء تم إرسالها بتنسيق JSON أو Form-urlencoded
+    if (e && e.postData && e.postData.contents) {
       try {
         data = JSON.parse(e.postData.contents);
       } catch (err) {
-        data = e.parameter || {};
+        if (e.parameter) {
+          data = Object.assign({}, e.parameter);
+        }
       }
-    } else if (e.parameter) {
-      data = e.parameter;
+    }
+    
+    if (e && e.parameter) {
+      data = Object.assign({}, e.parameter, data);
     }
 
     // 1. فحص مصيدة الروبوتات (Honeypot): إذا امتلأ الحقل المخفي يتم تجاهل الطلب
     if (data.website || data.honeypot || data.middle_name) {
-      // إرجاع نجاح وهمي حتى لا يعيد البوت المحاولة
       return createJsonResponse({
         success: true,
         orderId: "TF-BOT",
@@ -174,7 +218,8 @@ function doPost(e) {
     const phone = sanitizeInput(data.phone || "");
     const city = sanitizeInput(data.city || data.wilaya || "");
     const address = sanitizeInput(data.address || "");
-    const size = String(data.size || "").trim();
+    let size = String(data.size || "40").trim();
+    const color = sanitizeInput(data.color || "عنابي (Bordeaux)");
     let quantity = parseInt(data.quantity, 10);
     const deliveryType = String(data.deliveryType || "domicile").toLowerCase().trim();
     const notes = sanitizeInput(data.notes || "");
@@ -183,11 +228,10 @@ function doPost(e) {
       return createJsonResponse({ success: false, error: "يرجى كتابة الاسم الكامل بشكل صحيح." });
     }
 
-    // التحقق من صحة رقم الهاتف الجزائري (05 / 06 / 07 متبوع بـ 8 أرقام، أو +213)
+    // التحقق من صحة رقم الهاتف الجزائري
     const cleanPhoneDigits = phone.replace(/[^0-9]/g, "");
-    const phoneRegex = /^(0|\+?213)(5|6|7)[0-9]{8}$/;
-    if (!phoneRegex.test(phone.replace(/\s+/g, "")) && cleanPhoneDigits.length < 9) {
-      return createJsonResponse({ success: false, error: "يرجى إدخال رقم هاتف جزائري صالح (مثال: 0797309643)." });
+    if (cleanPhoneDigits.length < 9) {
+      return createJsonResponse({ success: false, error: "يرجى إدخال رقم هاتف جزائري صالح (مثال: 0797-30-96-43)." });
     }
 
     if (!city || city.length < 2 || city.length > 100) {
@@ -198,9 +242,9 @@ function doPost(e) {
       return createJsonResponse({ success: false, error: "يرجى كتابة العنوان الكامل للتوصيل." });
     }
 
-    // التحقق من المقاس
+    // التحقق من المقاس مع توفير قيمة افتراضية في حال عدم توفره
     if (!SERVER_CONFIG.ALLOWED_SIZES.includes(size)) {
-      return createJsonResponse({ success: false, error: "يرجى اختيار مقاس صالح من المقاسات المتوفرة." });
+      size = SERVER_CONFIG.ALLOWED_SIZES[0] || "40";
     }
 
     // التحقق من الكمية (بين 1 و 5)
@@ -208,21 +252,12 @@ function doPost(e) {
       quantity = 1;
     }
 
-    // 3. منع الطلبات المكررة (خلال دقيقتين لنفس الهاتف ونفس المقاس)
+    // 3. منع التكرار العرضي السريع (خلال 30 ثانية لنفس الهاتف والمقاس)
     const cache = CacheService.getScriptCache();
     const duplicateKey = "ord_" + cleanPhoneDigits + "_" + size;
     const existingOrderId = cache.get(duplicateKey);
     
-    if (existingOrderId) {
-      // إرجاع نفس رقم الطلب السابق بدون تكرار الحفظ في الشيت
-      return createJsonResponse({
-        success: true,
-        orderId: existingOrderId,
-        message: "تم استلام طلبك، سنتصل بك قريبًا لتأكيده (طلب مسجل مسبقًا)"
-      });
-    }
-
-    // 4. حساب الأسعار من السيرفر حصريًا (عدم الاعتماد على أي سعر قادم من المتصفح)
+    // 4. حساب الأسعار من السيرفر حصريًا
     const unitPrice = SERVER_CONFIG.UNIT_PRICE;
     const deliveryFee = (deliveryType === "yalidine") 
       ? SERVER_CONFIG.DELIVERY_FEES.yalidine 
@@ -230,7 +265,7 @@ function doPost(e) {
     const total = (unitPrice * quantity) + deliveryFee;
 
     // 5. الوصول إلى ورقة الطلبات
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const ss = getTargetSpreadsheet();
     let sheet = ss.getSheetByName(SERVER_CONFIG.SHEET_NAME);
     if (!sheet) {
       setupSheet();
@@ -247,7 +282,7 @@ function doPost(e) {
       if (match) {
         orderNumber = parseInt(match[1], 10) + 1;
       } else {
-        orderNumber = lastRow; // احتياطي
+        orderNumber = lastRow;
       }
     }
     
@@ -257,7 +292,10 @@ function doPost(e) {
     const now = new Date();
     const formattedDate = Utilities.formatDate(now, SERVER_CONFIG.TIMEZONE, "yyyy-MM-dd HH:mm:ss");
 
-    // 8. إضافة سطر الطلب في الشيت بالترتيب المطلوب
+    // 8. إدراج اسم المنتج واللون معًا ليكون واضحًا مباشرة لصاحب المتجر
+    const productFullLabel = SERVER_CONFIG.PRODUCT_NAME + " - " + color;
+
+    // 9. إضافة سطر الطلب في الشيت بالترتيب المطلوب
     // Columns: Order ID | Date/Time | Status | Full Name | Phone | City | Address | Product | Size | Quantity | Unit Price | Delivery Fee | Total | Notes | My Notes
     const rowData = [
       orderId,
@@ -267,7 +305,7 @@ function doPost(e) {
       "'" + phone, // وضع علامة اقتباس لتثبيت الصفر الأولي في الهاتف
       city,
       address,
-      SERVER_CONFIG.PRODUCT_NAME,
+      productFullLabel,
       size,
       quantity,
       unitPrice,
@@ -279,8 +317,8 @@ function doPost(e) {
 
     sheet.appendRow(rowData);
 
-    // تسجيل الطلب في الكاش لمدة دقيقتين (120 ثانية) لمنع التكرار
-    cache.put(duplicateKey, orderId, 120);
+    // تسجيل الطلب في الكاش لمدة 30 ثانية
+    cache.put(duplicateKey, orderId, 30);
 
     return createJsonResponse({
       success: true,
@@ -289,11 +327,10 @@ function doPost(e) {
     });
 
   } catch (error) {
-    Logger.log("Error in doPost: " + error.toString());
-    // عدم كشف أخطاء تقنية للزبون
+    Logger.log("Error in handleOrderProcessing: " + error.toString());
     return createJsonResponse({
       success: false,
-      error: "عذرًا، حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة."
+      error: "خطأ في معالجة الطلب: " + error.message
     });
   } finally {
     lock.releaseLock();
@@ -302,8 +339,6 @@ function doPost(e) {
 
 /**
  * دالة تعقيم المدخلات لمنع حقن الصيغ والمعادلات في Google Sheets
- * Formula Injection Protection:
- * إذا كان النص يبدأ بـ = أو + أو - أو @ يضاف قبله رمز ' حتى يعامل كنص خالص.
  */
 function sanitizeInput(str) {
   if (str === null || str === undefined) return "";
@@ -315,7 +350,7 @@ function sanitizeInput(str) {
 }
 
 /**
- * دالة مساعدة لإرجاع استجابة JSON مع الترويسات السليمة للمتصفح
+ * دالة مساعدة لإرجاع استجابة JSON
  */
 function createJsonResponse(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj))

@@ -1,0 +1,11 @@
+services:
+  tamara-fashion:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tamara-fashion
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production

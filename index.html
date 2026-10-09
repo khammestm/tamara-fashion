@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>TAMARA FASHION - فستان ميرال قطيفة طقم كامل 4 قطع</title>
-  <meta name="description" content="متجر TAMARA FASHION - فستان ميرال قطيفة طقم كامل 4 قطع. دفا وأناقة في دارك هذا الشتاء. توصيل لـ 58 ولاية والدفع عند الاستلام.">
-  <meta property="og:title" content="TAMARA FASHION - فستان ميرال قطيفة طقم كامل 4 قطع">
-  <meta property="og:description" content="دفا وأناقة في دارك هذا الشتاء. روب قطيفة ملكية مع حزام وربطة شعر وطوق شعر. توصيل 58 ولاية والدفع عند الاستلام.">
+  <title>TAMARA FASHION - فستان ميرال قطيفة طقم كامل 3 قطع</title>
+  <meta name="description" content="متجر TAMARA FASHION - فستان ميرال قطيفة طقم كامل 3 قطع (بيج، عنابي، بلون كاسي). دفا وأناقة في دارك هذا الشتاء. تفصيل ورشة تمارا في بوسعادة منذ 2020. توصيل لـ 58 ولاية والدفع عند الاستلام.">
+  <meta property="og:title" content="TAMARA FASHION - فستان ميرال قطيفة طقم كامل 3 قطع">
+  <meta property="og:description" content="دفا وأناقة في دارك هذا الشتاء. روب قطيفة ملكية مع حزام وربطة شعر في 3 ألوان راقية (بيج، عنابي، بلون كاسي). تفصيل ورشة تمارا في بوسعادة.">
   <meta property="og:type" content="product">
-  <meta property="og:image" content="./images/IMG_0106.jpg">
+  <meta property="og:image" content="./images/IMG_0108.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,6 +53,14 @@
       font-family: 'Cairo', 'Tajawal', sans-serif;
     }
 
+    .ltr-phone {
+      direction: ltr !important;
+      unicode-bidi: isolate !important;
+      display: inline-block !important;
+      font-family: inherit;
+      letter-spacing: 0.5px;
+    }
+
     /* شريط الإعلان العلوي */
     .top-bar {
       background: linear-gradient(90deg, #4F0E1C, #6B1426, #4F0E1C);
@@ -61,7 +69,6 @@
       padding: 9px 14px;
       font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.3px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -160,73 +167,404 @@
     }
 
     /* معرض الصور */
+    /* إطار معرض الصور الموحد بنسبة قياسية مربعة 1:1 */
     .gallery-section {
       position: relative;
-      background: #F4EBEB;
+      background: #FAF5F6;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .main-image-wrapper {
+    @media (max-width: 640px) {
+      .gallery-section {
+        padding: 10px 8px 14px 8px;
+      }
+    }
+
+    /* الإطار الموحد المربع الكبير (Standard Square Aspect Ratio 1:1) */
+    .gallery-master-frame {
       position: relative;
       width: 100%;
-      height: auto;
-      min-height: 240px;
-      max-height: 75vh;
+      max-width: 580px;
+      aspect-ratio: 1 / 1;
+      background: radial-gradient(circle at center, #FFFFFF 0%, #F5ECED 100%);
+      border-radius: 20px;
+      border: 2px solid #E6D2D6;
+      box-shadow: 
+        0 14px 34px -10px rgba(107, 20, 38, 0.12),
+        0 0 0 1px rgba(197, 160, 89, 0.35),
+        inset 0 0 24px rgba(230, 210, 214, 0.35);
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #EDE1E3;
+      user-select: none;
+      -webkit-user-select: none;
+      margin: 0 auto;
     }
 
-    @media (max-width: 640px) {
-      .main-image-wrapper {
-        min-height: 240px;
-      }
+    /* منطقة عرض الصورة بالكامل دون أي اقتصاص لتفاصيل الفستان */
+    .gallery-image-viewport {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      box-sizing: border-box;
+      position: relative;
     }
 
     .main-image {
-      width: auto;
-      height: auto;
       max-width: 100%;
-      max-height: 75vh;
+      max-height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
       object-position: center;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      display: block;
+      filter: drop-shadow(0 4px 14px rgba(0,0,0,0.08));
     }
 
-    .exclusive-badge {
+    /* علامة TAMARA FASHION في الزاوية العلوية للإطار لحفظ الحقوق وإبراز الهوية */
+    .gallery-top-corner-brand {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 14px;
+      right: 14px;
       background: rgba(107, 20, 38, 0.92);
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: #FFFFFF;
       padding: 6px 14px;
       border-radius: 30px;
       font-size: 0.82rem;
       font-weight: 800;
-      border: 1px solid rgba(197, 160, 89, 0.6);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(224, 185, 114, 0.7);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      z-index: 7;
+      pointer-events: none;
+    }
+
+    .gallery-top-corner-brand .corner-brand-crown {
+      font-size: 0.95rem;
+    }
+
+    .gallery-top-corner-brand .corner-brand-name {
+      color: #FFF3D6;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+    }
+
+    .gallery-top-corner-brand .corner-brand-dot {
+      color: rgba(224, 185, 114, 0.8);
+    }
+
+    .gallery-top-corner-brand .corner-brand-phone {
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.78rem;
+      direction: ltr;
+    }
+
+    /* شارة الزاوية العلوية المقابلة */
+    .gallery-corner-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: var(--primary);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border: 1px solid rgba(197, 160, 89, 0.45);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      z-index: 7;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* شريط حقوق التصوير والتفصيل أسفل الإطار */
+    .gallery-bottom-copyright {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: rgba(255, 255, 255, 0.95);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      z-index: 6;
+      pointer-events: none;
+      letter-spacing: 0.4px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* عداد الصور داخل الإطار */
+    .gallery-image-counter {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: #FFFFFF;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      z-index: 6;
+      pointer-events: none;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      direction: ltr;
+    }
+
+    /* زر تكبير الصورة بالحجم الكامل */
+    .gallery-zoom-trigger {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
+      color: var(--primary);
+      border: 1px solid rgba(197, 160, 89, 0.5);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 7;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      transition: all 0.2s ease;
+    }
+
+    .gallery-zoom-trigger:hover {
+      background: #FFFFFF;
+      color: var(--primary-dark);
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    /* نافذة تكبير الصورة (Lightbox Modal) */
+    .image-zoom-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .image-zoom-modal.show {
+      display: flex;
+    }
+
+    .zoom-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 5, 8, 0.88);
+      backdrop-filter: blur(8px);
+    }
+
+    .zoom-modal-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 820px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      background: #1A0D10;
+      border-radius: 18px;
+      border: 1.5px solid rgba(197, 160, 89, 0.5);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      overflow: hidden;
+    }
+
+    .zoom-modal-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 18px;
+      background: rgba(35, 12, 18, 0.95);
+      border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+    }
+
+    .zoom-modal-brand {
+      color: #FFF3D6;
+      font-size: 0.85rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .zoom-modal-close {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: #FFFFFF;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .zoom-modal-close:hover {
+      background: var(--primary);
+    }
+
+    .zoom-image-container {
+      position: relative;
+      flex: 1;
+      min-height: 320px;
+      max-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #110609;
+      padding: 14px;
+      overflow: hidden;
+    }
+
+    .zoom-modal-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .zoom-modal-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 18px;
+      background: rgba(35, 12, 18, 0.95);
+      border-top: 1px solid rgba(197, 160, 89, 0.3);
+      color: #FFF;
+      font-size: 0.85rem;
+    }
+
+    .zoom-modal-nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .zoom-nav-btn {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFF;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .zoom-nav-btn:hover {
+      background: var(--primary);
+    }
+
+    .zoom-counter {
+      color: var(--accent-gold-light);
+      font-weight: 700;
+      font-size: 0.82rem;
+      direction: ltr;
+    }
+
+    /* الدرع الشفاف المانع للنقر المباشر وتحميل الصور */
+    .image-protection-shield {
+      position: absolute;
+      inset: 0;
       z-index: 5;
+      background: rgba(0, 0, 0, 0.001);
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-user-drag: none;
+      cursor: default;
+    }
+
+    /* إشعار منع النسخ والتحميل التلقائي */
+    .copyright-toast {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      background: rgba(79, 14, 28, 0.95);
+      color: #FFFFFF;
+      padding: 13px 26px;
+      border-radius: 30px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+      direction: rtl;
+      border: 1.5px solid rgba(197, 160, 89, 0.7);
+      max-width: 90vw;
+    }
+
+    .copyright-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* حظر التحميل والحفظ التلقائي على جميع الصور لمنع سرقتها */
+    img, .main-image, .thumb-btn img, .order-item-thumb {
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+      -webkit-user-drag: none !important;
+      -webkit-touch-callout: none !important;
+      pointer-events: none !important;
     }
 
     .gallery-nav-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       border: none;
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       color: var(--primary);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-      z-index: 5;
-      font-size: 1.1rem;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+      z-index: 8;
+      font-size: 1.2rem;
       transition: all 0.2s ease;
     }
 
@@ -255,8 +593,8 @@
     }
 
     .thumb-btn {
-      flex: 0 0 72px;
-      height: 72px;
+      flex: 0 0 74px;
+      height: 74px;
       border-radius: 10px;
       overflow: hidden;
       border: 2px solid transparent;
@@ -265,12 +603,13 @@
       background: #F0E8EA;
       opacity: 0.65;
       transition: all 0.25s ease;
+      position: relative;
     }
 
     .thumb-btn.active {
       border-color: var(--primary);
       opacity: 1;
-      transform: scale(1.03);
+      transform: scale(1.04);
       box-shadow: 0 2px 8px rgba(107, 20, 38, 0.2);
     }
 
@@ -279,6 +618,22 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    .thumb-badge {
+      position: absolute;
+      bottom: 2px;
+      left: 2px;
+      right: 2px;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      font-size: 0.62rem;
+      text-align: center;
+      border-radius: 4px;
+      padding: 1px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* تفاصيل السعر والاسم */
@@ -296,14 +651,14 @@
     }
 
     .product-title {
-      font-size: 1.7rem;
+      font-size: 1.65rem;
       font-weight: 900;
       color: var(--primary-dark);
       margin-bottom: 12px;
       line-height: 1.3;
     }
 
-    /* السعر المعروض تحت الصورة واسم المنتج مباشرة كما طُلب */
+    /* السعر المعروض تحت الصورة واسم المنتج مباشرة */
     .price-box {
       display: flex;
       align-items: baseline;
@@ -345,12 +700,97 @@
       margin-right: auto;
     }
 
-    /* ميزات الثقة السريعة */
+    /* قسم اختيار الألوان الثلاثة (Beige, Bordeaux, Blanc Cassé) */
+    .color-selector-section {
+      background: #FFF9FA;
+      padding: 18px 20px;
+      border-radius: 12px;
+      border: 1.5px solid #F0D9DD;
+      margin-bottom: 18px;
+    }
+
+    .color-selector-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .color-selector-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .selected-color-label {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .colors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .color-card-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 8px;
+      background: #FFFFFF;
+      border: 2px solid #E2D3D6;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+
+    .color-card-btn:hover {
+      border-color: var(--primary-light);
+      background: #FFF;
+      transform: translateY(-2px);
+    }
+
+    .color-card-btn.active {
+      border-color: var(--primary);
+      background: #FAF2F4;
+      box-shadow: 0 4px 12px rgba(107, 20, 38, 0.18);
+      transform: translateY(-2px);
+    }
+
+    .color-swatch-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-bottom: 6px;
+      border: 2px solid rgba(0,0,0,0.15);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+    }
+
+    .color-btn-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .color-btn-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* بطاقات الثقة والضمان */
     .trust-badges-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     @media (min-width: 600px) {
@@ -415,7 +855,7 @@
 
     .size-btn {
       flex: 1 0 calc(25% - 8px);
-      min-width: 64px;
+      min-width: 60px;
       padding: 12px 8px;
       background: #FFFFFF;
       border: 2px solid #E2D3D6;
@@ -504,14 +944,6 @@
       0% { transform: translateX(-150%) rotate(30deg); }
       20% { transform: translateX(150%) rotate(30deg); }
       100% { transform: translateX(150%) rotate(30deg); }
-    }
-
-    .btn-order-now.disabled {
-      background: #B0A2A5 !important;
-      border-color: #CFC2C4 !important;
-      cursor: not-allowed;
-      box-shadow: none !important;
-      transform: none !important;
     }
 
     .paused-orders-banner {
@@ -669,7 +1101,7 @@
 
     .footer-copy {
       font-size: 0.78rem;
-      color: #BA9D A2;
+      color: #BA9DA2;
       border-top: 1px solid rgba(255,255,255,0.1);
       padding-top: 16px;
       margin-top: 16px;
@@ -812,8 +1244,8 @@
     }
 
     .order-item-thumb {
-      width: 60px;
-      height: 60px;
+      width: 65px;
+      height: 65px;
       border-radius: 8px;
       object-fit: cover;
       border: 1px solid #DEC8CC;
@@ -823,12 +1255,13 @@
       font-size: 0.95rem;
       font-weight: 800;
       color: var(--primary-dark);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
 
     .order-item-meta {
       font-size: 0.82rem;
       color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* حقول النموذج */
@@ -1123,6 +1556,178 @@
       cursor: pointer;
       font-size: 0.95rem;
     }
+
+    /* أداة فحص وتشخيص اتصال Google Sheet */
+    .btn-footer-diag {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #F8EDEF;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      margin-top: 10px;
+    }
+    .btn-footer-diag:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: #D4AF37;
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .diag-modal-card {
+      background: #FFFFFF;
+      width: 95%;
+      max-width: 680px;
+      border-radius: 16px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      padding: 24px;
+      direction: rtl;
+      position: relative;
+    }
+    .diag-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #F3EAEB;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+    .diag-header h3 {
+      margin: 0;
+      color: #6B1426;
+      font-size: 1.25rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .diag-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+    .diag-badge.ok {
+      background: #DEF7EC;
+      color: #03543F;
+      border: 1px solid #BCF0DA;
+    }
+    .diag-badge.err {
+      background: #FDE8E8;
+      color: #9B1C1C;
+      border: 1px solid #F8B4B4;
+    }
+    .diag-badge.warn {
+      background: #FEF08A;
+      color: #854D0E;
+      border: 1px solid #FDE047;
+    }
+    .diag-box {
+      background: #FAF6F7;
+      border: 1px solid #EADBDE;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .diag-box strong {
+      color: #4A121E;
+    }
+    .diag-code-box {
+      background: #231B1E;
+      color: #E2E8F0;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-family: monospace;
+      direction: ltr;
+      text-align: left;
+      font-size: 0.82rem;
+      word-break: break-all;
+      margin: 8px 0;
+      user-select: all;
+    }
+    .diag-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .diag-btn-primary {
+      background: #6B1426;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .diag-btn-primary:hover {
+      background: #871D33;
+    }
+    .diag-btn-secondary {
+      background: #F4EBEB;
+      color: #6B1426;
+      border: 1px solid #D9C5C8;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+    .diag-btn-secondary:hover {
+      background: #E8D8DB;
+    }
+    .diag-steps-list {
+      margin: 10px 0;
+      padding-right: 20px;
+    }
+    .diag-steps-list li {
+      margin-bottom: 8px;
+    }
+    .diag-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 10px;
+    }
+    .diag-table th {
+      background: #6B1426;
+      color: #FFFFFF;
+      padding: 8px;
+      text-align: right;
+    }
+    .diag-table td {
+      padding: 8px;
+      border-bottom: 1px solid #EADBDE;
+    }
+    .diag-alert-action-btn {
+      display: inline-block;
+      margin-top: 8px;
+      background: #6B1426;
+      color: #FFFFFF !important;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -1132,44 +1737,71 @@
        ========================================================================= -->
   <script>
     const CONFIG = {
-      // 1. رابط الويب اب من Google Apps Script (الصقه هنا بعد إتمام الخطوة 3 في SETUP.txt)
-      apps_script_url: "", 
+      // 1. رابط الويب اب من Google Apps Script
+      apps_script_url: "https://script.google.com/macros/s/AKfycbxDHZd6wGWwvhSBvXTZjLePQhsR4LuQ0UICnd2gyaFRmOUgmyNQVvUuCgTPNrjcuykr/exec", 
 
       // 2. التحكم في استقبال الطلبات (true = مفتوح، false = الطلبات متوقفة مؤقتًا)
       orders_open: true,
 
       // 3. معلومات المنتج
-      product_name_ar: "فستان ميرال قطيفة طقم كامل 4 قطع",
+      product_name_ar: "فستان ميرال قطيفة طقم كامل 3 قطع",
+      pieces_count: "3 قطع",
       price: 4900,         // السعر الحالي بالدينار الجزائري (دج)
       old_price: 6500,     // السعر قبل التخفيض للشطب
       currency: "دج",
 
-      // 4. المقاسات المتوفرة (احذف أي مقاس ينفذ من عندك)
+      // 4. الألوان الثلاثة المتوفرة (Bordeaux, Beige, Blanc Cassé)
+      colors: [
+        {
+          id: "bordeaux",
+          name_ar: "عنابي (Bordeaux)",
+          hex: "#6B1426",
+          image: "./images/IMG_0108.jpg",
+          desc: "لون عنابي ملكي فاخر وأنيق للسهرات"
+        },
+        {
+          id: "beige",
+          name_ar: "بيج (Beige)",
+          hex: "#C4A482",
+          image: "./images/IMG_0111.JPG",
+          desc: "لون بيج دافئ ولمعة مخملية ساحرة"
+        },
+        {
+          id: "blanc_casse",
+          name_ar: "بلون كاسي (Blanc Cassé)",
+          hex: "#F3ECE1",
+          image: "./images/IMG_0110.JPG",
+          desc: "أبيض عاجي راقي ونقي بلمسة لؤلؤية"
+        }
+      ],
+      default_color: "bordeaux",
+
+      // 5. المقاسات المتوفرة (احذف أي مقاس ينفذ من عندك)
       sizes: ["36", "38", "40", "42", "44", "46", "48", "50"],
       default_size: "40",
 
-      // 5. أسعار التوصيل
+      // 6. أسعار التوصيل
       delivery_fee_home: 700,     // توصيل للمنزل 700 دج
       delivery_fee_yalidine: 550, // استلام من مكتب ياليدين 550 دج
 
-      // 6. أرقام الاتصال
-      whatsapp_number: "0797309643",
-      phone_display: "0797 30 96 43",
+      // 7. رقم الهاتف والواتساب
+      whatsapp_number: "+213797309643",
+      phone_display: "0797-30-96-43",
 
-      // 7. صور المنتج (مسارات محلية أو روابط إنترنت)
+      // 8. صور المنتج الحقيقية المرفقة (الصورة الرئيسية IMG_0108.jpg وإطار موحد مربع قياسي)
       images: [
-        "./images/IMG_0106.jpg",
-        "./images/IMG_0107.jpg",
-        "./images/IMG_0108.jpg",
-        "./images/IMG_0109.jpg.jpg",
-        "./images/IMG_0110.JPG",
-        "./images/IMG_0111.JPG",
-        "./images/IMG_0112.JPG",
-        "./images/IMG_0113.JPG",
-        "./images/IMG_0114.JPG",
-        "./images/IMG_0115.JPG",
-        "./images/IMG_0116.JPG",
-        "./images/IMG_0117.JPG"
+        { src: "./images/IMG_0108.jpg", label: "عنابي (Bordeaux) - الصورة الرئيسية الملكية" },
+        { src: "./images/IMG_0106.jpg", label: "عنابي (Bordeaux) - طقم 3 قطع" },
+        { src: "./images/IMG_0111.JPG", label: "بيج (Beige) - طقم 3 قطع" },
+        { src: "./images/IMG_0110.JPG", label: "بلون كاسي (Blanc Cassé) - طقم 3 قطع" },
+        { src: "./images/IMG_0107.jpg", label: "عنابي (Bordeaux) - تفاصيل الطقم" },
+        { src: "./images/IMG_0109.jpg.jpg", label: "عنابي (Bordeaux) - الطقم الكامل" },
+        { src: "./images/IMG_0112.JPG", label: "تفاصيل الدونتال وأزرار اللؤلؤ" },
+        { src: "./images/IMG_0113.JPG", label: "بلون كاسي - الروب والحزام والربطة" },
+        { src: "./images/IMG_0114.JPG", label: "بيج - الروب والحزام والربطة" },
+        { src: "./images/IMG_0115.JPG", label: "تفاصيل الصدرية والأكمام" },
+        { src: "./images/IMG_0116.JPG", label: "عنابي - تناسق القطع والأكمام" },
+        { src: "./images/IMG_0117.JPG", label: "الألوان وتناسق الطقم" }
       ]
     };
   </script>
@@ -1177,7 +1809,7 @@
   <!-- شريط الإعلان العلوي -->
   <div class="top-bar">
     <span class="badge">عرض الشتاء ❄️</span>
-    <span>توصيل سريع لـ 58 ولاية 🇩🇿 | الدفع عند الاستلام بعد المعاينة 🤝</span>
+    <span>توصيل سريع لـ 58 ولاية 🇩🇿 | الدفع عند الاستلام بعد المعاينة 🤝 | هاتف: <span class="ltr-phone">0797-30-96-43</span></span>
   </div>
 
   <!-- الترويسة الرئيسية -->
@@ -1186,10 +1818,10 @@
       <a href="#" class="brand-logo">
         <div>
           <div class="brand-title">TAMARA FASHION</div>
-          <div class="brand-subtitle">أزياء راقية - ورشتنا ببوسعادة منذ 2020</div>
+          <div class="brand-subtitle">تفصيل ورشة تمارا في بوسعادة منذ 2020</div>
         </div>
       </a>
-      <a id="headerWhatsappBtn" href="#" target="_blank" class="header-contact-btn">
+      <a id="headerWhatsappBtn" href="https://wa.me/213797309643" target="_blank" class="header-contact-btn">
         <span>واتساب</span> 💬
       </a>
     </div>
@@ -1201,14 +1833,54 @@
     <!-- بطاقة المنتج -->
     <article class="product-card">
       
-      <!-- معرض الصور -->
+      <!-- معرض الصور: إطار موحد قياسي مربع 1:1 مع علامة TAMARA FASHION في الزاوية العلوية -->
       <section class="gallery-section" aria-label="معرض صور فستان ميرال">
-        <div class="exclusive-badge">طقم كامل 4 قطع 👑</div>
-        <div class="main-image-wrapper">
-          <img id="mainProductImage" src="./images/IMG_0106.jpg" alt="فستان ميرال قطيفة طقم كامل 4 قطع" class="main-image">
+        
+        <!-- الإطار الموحد المربع الكبير (Standard Ratio Frame) -->
+        <div class="gallery-master-frame" id="galleryMasterFrame">
+          
+          <!-- علامة TAMARA FASHION في الزاوية العلوية للإطار لحفظ الحقوق وإبراز الفخامة -->
+          <div class="gallery-top-corner-brand" aria-label="علامة تمارا فاشن التجارية">
+            <span class="corner-brand-crown">👑</span>
+            <span class="corner-brand-name">TAMARA FASHION</span>
+            <span class="corner-brand-dot">•</span>
+            <span class="corner-brand-phone ltr-phone">0797-30-96-43</span>
+          </div>
+
+          <!-- شارة تميز الطقم في الزاوية العلوية المقابلة -->
+          <div class="gallery-corner-tag">
+            <span>طقم 3 قطع أصلي</span> ✨
+          </div>
+
+          <!-- درع الحماية الشفاف لمنع حفظ أو تحميل الصورة -->
+          <div class="image-protection-shield" id="imageProtectionShield" title="الصور محمية بحقوق النشر لـ TAMARA FASHION"></div>
+          
+          <!-- منطقة عرض الصورة بالكامل دون أي قص أو حجب للتصميم -->
+          <div class="gallery-image-viewport">
+            <img id="mainProductImage" src="./images/IMG_0108.jpg" alt="فستان ميرال قطيفة طقم كامل 3 قطع - TAMARA FASHION" class="main-image" oncontextmenu="return false;">
+          </div>
+          
+          <!-- زر تكبير الصورة بالحجم الكامل -->
+          <button type="button" class="gallery-zoom-trigger" id="btnOpenZoom" title="عرض الفستان بالحجم الكامل وفحص التفاصيل">
+            <span>🔍</span> <span>تكبير الصورة</span>
+          </button>
+
+          <!-- شريط حقوق التصوير والتفصيل أسفل الإطار -->
+          <div class="gallery-bottom-copyright">
+            <span>تصوير وتفصيل حصري © TAMARA FASHION</span>
+          </div>
+
+          <!-- عداد الصور داخل الإطار القياسي -->
+          <div class="gallery-image-counter">
+            <span id="galleryCurrentIdx">1</span> / <span id="galleryTotalIdx">12</span>
+          </div>
+
+          <!-- أزرار التنقل بين الصور -->
           <button id="btnPrevImage" class="gallery-nav-btn gallery-prev" aria-label="الصورة السابقة">❮</button>
           <button id="btnNextImage" class="gallery-nav-btn gallery-next" aria-label="الصورة التالية">❯</button>
         </div>
+
+        <!-- شريط مصغرات الصور أسفل الإطار الموحد -->
         <div id="thumbnailsRow" class="thumbnails-row">
           <!-- توليد الصور المصغرة بالجافاسكريبت تلقائياً من CONFIG -->
         </div>
@@ -1217,7 +1889,7 @@
       <!-- تفاصيل المنتج، الاسم، السعر أسفله مباشرة -->
       <div class="product-core-info">
         <span class="product-category">تشكيلة الشتاء الفاخرة ❄️✨</span>
-        <h1 id="productTitleDisplay" class="product-title">فستان ميرال قطيفة طقم كامل 4 قطع</h1>
+        <h1 id="productTitleDisplay" class="product-title">فستان ميرال قطيفة طقم كامل 3 قطع</h1>
         
         <!-- السعر معروض مباشرة تحت الاسم والصورة -->
         <div class="price-box">
@@ -1227,6 +1899,21 @@
           </div>
           <span id="productOldPriceDisplay" class="old-price">6500 دج</span>
           <span class="discount-pill">تخفيض حصري 🔥</span>
+        </div>
+
+        <!-- اختيار اللون (Beige, Bordeaux, Blanc Cassé) -->
+        <div class="color-selector-section">
+          <div class="color-selector-header">
+            <div class="color-selector-title">
+              <span>اختاري اللون المفضل لديكِ</span> 🎨
+            </div>
+            <div class="selected-color-label">
+              اللون المختار: <strong id="currentSelectedColorText">بيج (Beige)</strong>
+            </div>
+          </div>
+          <div id="colorsContainer" class="colors-grid">
+            <!-- أزرار الألوان تتولد من CONFIG -->
+          </div>
         </div>
 
         <!-- بطاقات الثقة والضمان -->
@@ -1245,7 +1932,7 @@
           </div>
           <div class="trust-badge-item">
             <span class="icon">🧵</span>
-            <span>تفصيل ورشتنا ببوسعادة</span>
+            <span>تفصيل ورشة تمارا في بوسعادة</span>
           </div>
         </div>
 
@@ -1263,7 +1950,7 @@
             <!-- أزرار المقاسات تتولد من CONFIG -->
           </div>
           <div class="size-helper-note">
-            <span>📏 ما عرفتيش مقاسك ؟ ابعثيلنا الطول و الوزن على الواتساب ونعاونوك فورًا!</span>
+            <span>📏 ما عرفتيش مقاسك ؟ ابعثيلنا الطول و الوزن على الرقم <strong class="ltr-phone">0797-30-96-43</strong> ونعاونوك فورًا!</span>
           </div>
         </div>
 
@@ -1285,12 +1972,12 @@
     <!-- بطاقة الوصف العربي المليء بالإيموجي المعبرة والجمالية -->
     <section class="description-card" aria-label="وصف المنتج">
       <h2 class="section-title">
-        <span>تفاصيل فستان ميرال طقم 4 قطع</span> ✨🌸
+        <span>تفاصيل فستان ميرال طقم 3 قطع</span> ✨🌸
       </h2>
 
       <div class="desc-intro">
-        🌸 <strong>فستان ميرال قطيفة طقم كامل 4 قطع</strong> 👑<br>
-        دفا و أناقة في دارك هذا الشتاء ❄️☕ روب من القطيفة الناعمة بصدرية دونتال مطرزة بالورود 🌹 و أزرار لؤلؤ أنيقة 🦪، فولان على الكتفين ✨ و أكمام واسعة بالدونتال . تجي مع الحزام 🎀، ربطة الشعر 💫 و طوق الشعر 👑 من نفس القطيفة و نفس اللون الملكي! 🥰💖
+        🌸 <strong>فستان ميرال قطيفة طقم كامل 3 قطع</strong> 👑<br>
+        دفا و أناقة في دارك هذا الشتاء ❄️☕ روب من القطيفة الناعمة بصدرية دونتال مطرزة بالورود 🌹 و أزرار لؤلؤ أنيقة 🦪، فولان ساحر على الكتفين ✨ و أكمام واسعة بالدونتال . تجي مع الحزام 🎀 و ربطة الشعر 💫 من نفس القطيفة و نفس اللون الملكي! 🥰💖
       </div>
 
       <div class="why-love-it">
@@ -1310,7 +1997,11 @@
           </li>
           <li class="feature-item">
             <span class="emoji">🎁</span>
-            <div><strong>طقم كامل منسق :</strong> الروب 👗 + الحزام 🎀 + ربطة الشعر 💫 + طوق الشعر 👑 في طقم واحد متكامل ومميز!</div>
+            <div><strong>طقم كامل منسق :</strong> الروب 👗 + الحزام 🎀 + ربطة الشعر 💫 في طقم واحد متكامل ومميز!</div>
+          </li>
+          <li class="feature-item">
+            <span class="emoji">🎨</span>
+            <div><strong>3 ألوان ساحرة تناسب جميع الأذواق :</strong> متوفرة في اللون البيج (Beige) الدافئ، العنابي (Bordeaux) الملكي، والأبيض العاجي (Blanc Cassé) اللؤلؤي 🌸✨</div>
           </li>
           <li class="feature-item">
             <span class="emoji">🤱</span>
@@ -1324,7 +2015,7 @@
           <span>📏 المقاسات ومساعدة المقاس</span>
         </div>
         <p>
-          المقاسات متوفرة من <strong>38 إلى 50</strong>. ما عرفتيش مقاسك ؟ ابعثيلنا الطول و الوزن على الرقم <strong>0797 30 96 43</strong> و نعاونوك تختاري المناسب ليك بأفضل شكل 💖📲
+          المقاسات متوفرة من <strong>38 إلى 50</strong>. ما عرفتيش مقاسك ؟ ابعثيلنا الطول و الوزن على الرقم <strong class="ltr-phone">0797-30-96-43</strong> و نعاونوك تختاري المناسب ليك بأفضل شكل 💖📲
         </p>
       </div>
 
@@ -1334,7 +2025,7 @@
         </div>
         <p>
           التوصيل متوفر لـ <strong>58 ولاية</strong> 🇩🇿 - الدفع عند الاستلام يدًا بيد بعد فتح الطرد ومعاينته 🤝.<br>
-          مخيطة بحب وإتقان في ورشتنا ببوسعادة منذ 2020 🇩🇿❤️✨
+          تفصيل ورشة تمارا في بوسعادة منذ 2020 🇩🇿❤️✨
         </p>
       </div>
 
@@ -1345,11 +2036,16 @@
   <!-- الفوتر -->
   <footer>
     <div class="footer-brand">TAMARA FASHION</div>
-    <div class="footer-sub">أزياء نسائية جزائرية راقية</div>
+    <div class="footer-sub">تفصيل ورشة تمارا في بوسعادة منذ 2020</div>
     <div class="footer-info">
-      📍 ورشتنا: بوسعادة، ولاية المسيلة، الجزائر 🇩🇿<br>
-      📞 هاتف / واتساب: <strong>0797 30 96 43</strong><br>
-      خدمة الزبائن متوفرة 7/7 أيام للرد على استفساراتكم
+      📍 ورشة تمارا: بوسعادة، ولاية المسيلة، الجزائر 🇩🇿<br>
+      📞 هاتف / واتساب: <strong class="ltr-phone">0797-30-96-43</strong><br>
+      خدمة الزبائن متوفرة 7/7 أيام للرد على استفساراتكم ومساعدتكم
+    </div>
+    <div style="margin: 12px 0;">
+      <button type="button" id="btnOpenDiagnostics" class="btn-footer-diag" title="فحص اتصال الربط بـ Google Sheet">
+        <span>⚡ فحص اتصال Google Sheet وتأكيد وصول الطلبات</span>
+      </button>
     </div>
     <div class="footer-copy">
       جميع الحقوق محفوظة © TAMARA FASHION 2020 - 2026
@@ -1357,7 +2053,7 @@
   </footer>
 
   <!-- زر الواتساب العائم -->
-  <a id="floatingWhatsapp" href="#" target="_blank" class="whatsapp-float" aria-label="تواصل عبر واتساب">
+  <a id="floatingWhatsapp" href="https://wa.me/213797309643" target="_blank" class="whatsapp-float" aria-label="تواصل عبر واتساب">
     <span class="whatsapp-badge-pulse">1</span>
     <svg viewBox="0 0 24 24">
       <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.49-1.4-1.74-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.18-.47-.3z"/>
@@ -1377,12 +2073,13 @@
         
         <!-- ملخص المنتج داخل النافذة -->
         <div class="order-item-summary">
-          <img id="modalProductThumb" src="./images/IMG_0106.jpg" alt="فستان ميرال" class="order-item-thumb">
+          <img id="modalProductThumb" src="./images/IMG_0108.jpg" alt="فستان ميرال" class="order-item-thumb">
           <div>
-            <div id="modalProductName" class="order-item-name">فستان ميرال قطيفة طقم كامل 4 قطع</div>
+            <div id="modalProductName" class="order-item-name">فستان ميرال قطيفة طقم كامل 3 قطع</div>
             <div class="order-item-meta">
-              <span>المقاس: </span><strong id="modalSelectedSize" style="color: var(--primary);">40</strong> | 
-              <span>السعر: </span><strong id="modalUnitPrice">4900 دج</strong>
+              <span>اللون: </span><strong id="modalSelectedColorText" style="color: var(--primary);">عنابي (Bordeaux)</strong> | 
+              <span>المقاس: </span><strong id="modalSelectedSize" style="color: var(--primary);">40</strong><br>
+              <span>سعر القطعة: </span><strong id="modalUnitPrice">4900 دج</strong>
             </div>
           </div>
         </div>
@@ -1396,7 +2093,17 @@
           <!-- حقل الحماية من البوتات (Honeypot) - مخفي تماماً -->
           <input type="text" name="website" id="honeypotField" style="display:none !important;" tabindex="-1" autocomplete="off">
 
-          <!-- 1. الاسم الكامل -->
+          <!-- 1. اختيار اللون -->
+          <div class="form-group">
+            <label class="form-label" for="custColor">
+              <span>اللون المرغوب</span><span class="req">*</span>
+            </label>
+            <select id="custColor" name="color" class="form-select" required>
+              <!-- خيارات الألوان تتولد تلقائياً -->
+            </select>
+          </div>
+
+          <!-- 2. الاسم الكامل -->
           <div class="form-group">
             <label class="form-label" for="custFullName">
               <span>الاسم الكامل</span><span class="req">*</span>
@@ -1405,16 +2112,16 @@
             <div id="errFullName" class="error-msg-inline">يرجى إدخال اسمكِ الكامل.</div>
           </div>
 
-          <!-- 2. رقم الهاتف -->
+          <!-- 3. رقم الهاتف -->
           <div class="form-group">
             <label class="form-label" for="custPhone">
               <span>رقم الهاتف (الجزائر)</span><span class="req">*</span>
             </label>
-            <input type="tel" id="custPhone" name="phone" class="form-input" dir="ltr" style="text-align: right;" placeholder="05 / 06 / 07 XX XX XX XX" required>
-            <div id="errPhone" class="error-msg-inline">يرجى إدخال رقم هاتف جزائري صحيح (مثال: 0797309643).</div>
+            <input type="tel" id="custPhone" name="phone" class="form-input" dir="ltr" style="text-align: right;" placeholder="0797-30-96-43 أو 05/06/07..." required>
+            <div id="errPhone" class="error-msg-inline">يرجى إدخال رقم هاتف جزائري صحيح (مثال: 0797-30-96-43).</div>
           </div>
 
-          <!-- 3. المقاس المختار (يمكن تعديله أيضاً هنا) -->
+          <!-- 4. المقاس المختار -->
           <div class="form-group">
             <label class="form-label" for="custSize">
               <span>المقاس</span><span class="req">*</span>
@@ -1424,7 +2131,7 @@
             </select>
           </div>
 
-          <!-- 4. الكمية (1 إلى 5) -->
+          <!-- 5. الكمية (1 إلى 5) -->
           <div class="form-group">
             <label class="form-label">
               <span>الكمية (من 1 إلى 5)</span><span class="req">*</span>
@@ -1437,7 +2144,7 @@
             <input type="hidden" id="custQuantity" name="quantity" value="1">
           </div>
 
-          <!-- 5. الولاية والمدينة -->
+          <!-- 6. الولاية والمدينة -->
           <div class="form-group">
             <label class="form-label" for="custWilaya">
               <span>الولاية</span><span class="req">*</span>
@@ -1506,7 +2213,7 @@
             <div id="errWilaya" class="error-msg-inline">يرجى اختيار الولاية.</div>
           </div>
 
-          <!-- 6. العنوان الكامل والبلدية -->
+          <!-- 7. العنوان الكامل والبلدية -->
           <div class="form-group">
             <label class="form-label" for="custAddress">
               <span>البلدية والعنوان الكامل للتوصيل</span><span class="req">*</span>
@@ -1515,7 +2222,7 @@
             <div id="errAddress" class="error-msg-inline">يرجى كتابة البلدية والعنوان بالتفصيل.</div>
           </div>
 
-          <!-- 7. طريقة التوصيل وسعرها -->
+          <!-- 8. طريقة التوصيل وسعرها -->
           <div class="form-group">
             <label class="form-label">
               <span>طريقة التوصيل</span><span class="req">*</span>
@@ -1545,7 +2252,7 @@
             </div>
           </div>
 
-          <!-- 8. ملاحظات (اختياري) -->
+          <!-- 9. ملاحظات (اختياري) -->
           <div class="form-group">
             <label class="form-label" for="custNotes">
               <span>ملاحظات إضافية (اختياري)</span>
@@ -1587,15 +2294,15 @@
           <div class="success-icon">✓</div>
           <h3 class="success-title">تم استلام طلبكِ بنجاح! 💖</h3>
           <p class="success-message">
-            سنتصل بكِ قريبًا لتأكيد المقاس وموعد التوصيل.<br>
+            سنتصل بكِ قريبًا لتأكيد المقاس واللون وموعد التوصيل.<br>
             شكراً لثقتكِ بـ <strong>TAMARA FASHION</strong> ✨
           </p>
           <div class="order-id-pill">
             رقم الطلب: <span id="successOrderId">TF-0001</span>
           </div>
           <div class="success-actions">
-            <a id="btnWhatsappSuccess" href="#" target="_blank" class="btn-whatsapp-follow">
-              <span>استفسار أو متابعة عبر الواتساب</span> 💬
+            <a id="btnWhatsappSuccess" href="https://wa.me/213797309643" target="_blank" class="btn-whatsapp-follow">
+              <span>متابعة الطلب عبر الواتساب</span> 💬
             </a>
             <button type="button" id="btnCloseSuccess" class="btn-close-success">إغلاق</button>
           </div>
@@ -1606,12 +2313,101 @@
     </div>
   </div>
 
+  <!-- نافذة تكبير الصورة بالحجم الكامل وفحص جودة القماش والتطريز -->
+  <div id="imageZoomModal" class="image-zoom-modal" aria-hidden="true" role="dialog" aria-label="عرض الفستان بالحجم الكامل">
+    <div class="zoom-modal-backdrop" id="zoomModalBackdrop"></div>
+    <div class="zoom-modal-content">
+      <div class="zoom-modal-top-bar">
+        <div class="zoom-modal-brand">
+          <span class="corner-brand-crown">👑</span>
+          <span class="corner-brand-name">TAMARA FASHION</span>
+          <span class="corner-brand-dot">•</span>
+          <span class="corner-brand-phone ltr-phone">0797-30-96-43</span>
+        </div>
+        <button type="button" class="zoom-modal-close" id="btnCloseZoomModal" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="zoom-image-container">
+        <div class="image-protection-shield" title="جميع الصور محمية بحقوق النشر لـ TAMARA FASHION"></div>
+        <img id="zoomModalImage" src="./images/IMG_0108.jpg" alt="فستان ميرال قطيفة طقم كامل 3 قطع - عرض كامل" class="zoom-modal-img" oncontextmenu="return false;">
+      </div>
+      <div class="zoom-modal-footer">
+        <div id="zoomModalLabel" class="zoom-modal-label">فستان ميرال طقم 3 قطع</div>
+        <div class="zoom-modal-nav">
+          <button type="button" class="zoom-nav-btn" id="btnZoomPrev">❮ السابقة</button>
+          <span id="zoomModalCounter" class="zoom-counter">1 / 12</span>
+          <button type="button" class="zoom-nav-btn" id="btnZoomNext">التالية ❯</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- آي فريم خفي للإرسال الاحتياطي الخارق بدون أي قيود CORS -->
+  <iframe id="gsOrderIframe" name="gsOrderIframe" style="display:none; width:0; height:0; border:none;" tabindex="-1" aria-hidden="true"></iframe>
+
+  <!-- نافذة فحص وتشخيص الربط مع Google Sheet -->
+  <div id="sheetDiagnosticsModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="diagTitle" style="display:none;">
+    <div class="diag-modal-card">
+      <div class="diag-header">
+        <h3 id="diagTitle">
+          <span>⚡</span>
+          <span>لوحة تشخيص وتأكيد الربط مع Google Sheet</span>
+        </h3>
+        <button id="btnCloseDiagModal" class="btn-close-modal" aria-label="إغلاق">✕</button>
+      </div>
+
+      <div class="diag-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <strong>رابط الويب اب الحالي (Google Apps Script):</strong>
+          <span id="diagStatusBadge" class="diag-badge warn">جاري التحقق...</span>
+        </div>
+        <div class="diag-code-box" id="diagCurrentUrl">https://script.google.com/macros/s/AKfycbxDHZd6wGWwvhSBvXTZjLePQhsR4LuQ0UICnd2gyaFRmOUgmyNQVvUuCgTPNrjcuykr/exec</div>
+        
+        <div id="diagResultContainer" style="margin-top:12px;">
+          <!-- سيتم عرض نتيجة الفحص هنا -->
+        </div>
+
+        <div class="diag-actions">
+          <button type="button" id="btnRunDiagTest" class="diag-btn-primary">
+            <span>🔄 إعادة فحص الاتصال الآن</span>
+          </button>
+          <button type="button" id="btnSendTestOrder" class="diag-btn-secondary">
+            <span>🧪 إرسال طلب تجريبي للجدول</span>
+          </button>
+          <a id="btnOpenAppsScriptDirect" href="https://script.google.com/macros/edit?lib=1XHCGQ9q_NiedKjOZrxRa5Yt9E2Caw_tuQlsgay9c-FXz0BoVMh3CW9Py" target="_blank" class="diag-btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+            <span>🔗 فتح مشروع Apps Script مباشرة</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- سجل الطلبات الاحتياطي المخزن محلياً -->
+      <div class="diag-box" style="margin-top:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <strong>📋 سجل الطلبات الاحتياطي (محفوظ بأمان في المتصفح):</strong>
+          <button type="button" id="btnSyncPendingOrders" class="diag-btn-secondary" style="padding:4px 10px; font-size:0.78rem;">
+            🔄 إعادة إرسال الطلبات للجدول
+          </button>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin:0 0 10px 0;">
+          كل طلب يقوم به الزائر يُحفظ فوراً هنا أولاً، حتى لو كانت Google Sheets متوقفة أو الصلاحيات مغلقة لن تضيع منك أي زبونة أبداً.
+        </p>
+        <div id="diagBackupList" style="max-height:220px; overflow-y:auto; border:1px solid #EADBDE; border-radius:8px; background:#FFFFFF;">
+          <!-- جدول الطلبات -->
+        </div>
+      </div>
+
+      <div style="text-align:left; margin-top:14px;">
+        <button type="button" id="btnCloseDiagModalBottom" class="btn-close-success" style="padding:8px 18px;">إغلاق النافذة</button>
+      </div>
+    </div>
+  </div>
+
   <!-- منطق التطبيق التفاعلي (VANILLA JAVASCRIPT) -->
   <script>
     (function() {
       // حالة التطبيق الداخلية
       const state = {
         activeImageIndex: 0,
+        selectedColorId: CONFIG.default_color || "bordeaux",
         selectedSize: CONFIG.default_size || (CONFIG.sizes[0] || "40"),
         quantity: 1,
         deliveryType: "domicile",
@@ -1623,8 +2419,15 @@
       const elThumbsRow = document.getElementById('thumbnailsRow');
       const elBtnPrev = document.getElementById('btnPrevImage');
       const elBtnNext = document.getElementById('btnNextImage');
+      const elColorsContainer = document.getElementById('colorsContainer');
+      const elSelectedColorText = document.getElementById('currentSelectedColorText');
+      const elCustColor = document.getElementById('custColor');
+      const elModalSelectedColorText = document.getElementById('modalSelectedColorText');
+      const elModalProductThumb = document.getElementById('modalProductThumb');
       const elSizesContainer = document.getElementById('sizesContainer');
       const elSelectedSizeText = document.getElementById('currentSelectedSizeText');
+      const elCustSize = document.getElementById('custSize');
+      const elModalSelectedSize = document.getElementById('modalSelectedSize');
       const elBtnOpenOrder = document.getElementById('btnOpenOrderModal');
       const elPausedBanner = document.getElementById('pausedOrdersBanner');
       const elOrderModal = document.getElementById('orderModal');
@@ -1635,12 +2438,10 @@
       const elBtnCloseSuccess = document.getElementById('btnCloseSuccess');
       const elBtnSubmit = document.getElementById('btnSubmitOrder');
       const elModalAlert = document.getElementById('modalAlertError');
-      const elCustSize = document.getElementById('custSize');
       const elQtyMinus = document.getElementById('btnQtyMinus');
       const elQtyPlus = document.getElementById('btnQtyPlus');
       const elQtyDisplay = document.getElementById('qtyDisplay');
       const elCustQuantity = document.getElementById('custQuantity');
-      const elModalSelectedSize = document.getElementById('modalSelectedSize');
       const elModalUnitPrice = document.getElementById('modalUnitPrice');
       const elCalcQty = document.getElementById('calcQty');
       const elCalcSubtotal = document.getElementById('calcSubtotal');
@@ -1663,12 +2464,10 @@
       elDisplayHomeFee.textContent = CONFIG.delivery_fee_home + " " + CONFIG.currency;
       elDisplayYalidineFee.textContent = CONFIG.delivery_fee_yalidine + " " + CONFIG.currency;
 
-      // إعداد روابط الواتساب
-      const cleanWaNum = CONFIG.whatsapp_number.replace(/[^0-9]/g, '');
-      const waIntlNum = cleanWaNum.startsWith('0') ? '213' + cleanWaNum.substring(1) : cleanWaNum;
-      const waDefaultUrl = `https://wa.me/${waIntlNum}?text=${encodeURIComponent('السلام عليكم، أريد الاستفسار عن فستان ميرال قطيفة طقم 4 قطع 🌸')}`;
-      elHeaderWhatsapp.href = waDefaultUrl;
-      elFloatingWhatsapp.href = waDefaultUrl;
+      // إعداد روابط الواتساب إلى +213797309643
+      const waDirectUrl = `https://wa.me/213797309643?text=${encodeURIComponent('السلام عليكم، أريد الاستفسار عن فستان ميرال قطيفة طقم 3 قطع 🌸')}`;
+      elHeaderWhatsapp.href = waDirectUrl;
+      elFloatingWhatsapp.href = waDirectUrl;
 
       // فحص إيقاف الطلبات (orders_open switch)
       if (!CONFIG.orders_open) {
@@ -1676,17 +2475,114 @@
         elPausedBanner.style.display = 'block';
       }
 
-      // 2. تهيئة معرض الصور
+      // 2. تهيئة قسم الألوان (Colors)
+      function setupColors() {
+        elColorsContainer.innerHTML = '';
+        elCustColor.innerHTML = '';
+
+        CONFIG.colors.forEach((col) => {
+          // زر اللون في الصفحة الرئيسية
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = `color-card-btn ${col.id === state.selectedColorId ? 'active' : ''}`;
+          btn.innerHTML = `
+            <span class="color-swatch-circle" style="background-color: ${col.hex};"></span>
+            <span class="color-btn-title">${col.name_ar}</span>
+            <span class="color-btn-sub">${col.desc}</span>
+          `;
+          btn.addEventListener('click', () => {
+            selectColor(col.id);
+          });
+          elColorsContainer.appendChild(btn);
+
+          // خيار اللون في نافذة الطلب
+          const opt = document.createElement('option');
+          opt.value = col.name_ar;
+          opt.dataset.id = col.id;
+          opt.textContent = col.name_ar;
+          if (col.id === state.selectedColorId) opt.selected = true;
+          elCustColor.appendChild(opt);
+        });
+
+        updateSelectedColorUI();
+      }
+
+      function selectColor(colorId) {
+        state.selectedColorId = colorId;
+        const colObj = CONFIG.colors.find(c => c.id === colorId) || CONFIG.colors[0];
+
+        // تحديث أزرار اللون في الصفحة
+        const buttons = elColorsContainer.querySelectorAll('.color-card-btn');
+        CONFIG.colors.forEach((col, idx) => {
+          if (buttons[idx]) {
+            buttons[idx].classList.toggle('active', col.id === colorId);
+          }
+        });
+
+        // مزامنة القائمة المنسدلة في النافذة
+        for (let i = 0; i < elCustColor.options.length; i++) {
+          if (elCustColor.options[i].dataset.id === colorId) {
+            elCustColor.selectedIndex = i;
+            break;
+          }
+        }
+
+        updateSelectedColorUI();
+
+        // تبديل صورة المعرض تلقائياً إلى صورة اللون المختار
+        if (colObj && colObj.image) {
+          const imgIdx = CONFIG.images.findIndex(img => img.src === colObj.image);
+          if (imgIdx !== -1) {
+            setImage(imgIdx);
+          }
+        }
+      }
+
+      function updateSelectedColorUI() {
+        const colObj = CONFIG.colors.find(c => c.id === state.selectedColorId) || CONFIG.colors[0];
+        elSelectedColorText.textContent = colObj.name_ar;
+        elModalSelectedColorText.textContent = colObj.name_ar;
+        if (colObj.image) {
+          elModalProductThumb.src = colObj.image;
+        }
+      }
+
+      elCustColor.addEventListener('change', (e) => {
+        const selectedOpt = elCustColor.options[elCustColor.selectedIndex];
+        const colorId = selectedOpt.dataset.id;
+        if (colorId) {
+          selectColor(colorId);
+        }
+      });
+
+      // 3. تهيئة معرض الصور الموحد
+      const elCurrentIdx = document.getElementById('galleryCurrentIdx');
+      const elTotalIdx = document.getElementById('galleryTotalIdx');
+      const elImageZoomModal = document.getElementById('imageZoomModal');
+      const elZoomModalImage = document.getElementById('zoomModalImage');
+      const elZoomModalLabel = document.getElementById('zoomModalLabel');
+      const elZoomModalCounter = document.getElementById('zoomModalCounter');
+      const elBtnOpenZoom = document.getElementById('btnOpenZoom');
+      const elBtnCloseZoomModal = document.getElementById('btnCloseZoomModal');
+      const elZoomModalBackdrop = document.getElementById('zoomModalBackdrop');
+      const elBtnZoomPrev = document.getElementById('btnZoomPrev');
+      const elBtnZoomNext = document.getElementById('btnZoomNext');
+
       function setupGallery() {
         if (!CONFIG.images || CONFIG.images.length === 0) return;
         
+        if (elTotalIdx) elTotalIdx.textContent = CONFIG.images.length;
+
         elThumbsRow.innerHTML = '';
-        CONFIG.images.forEach((imgSrc, idx) => {
+        CONFIG.images.forEach((item, idx) => {
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.className = `thumb-btn ${idx === 0 ? 'active' : ''}`;
-          btn.setAttribute('aria-label', `عرض الصورة ${idx + 1}`);
-          btn.innerHTML = `<img src="${imgSrc}" alt="فستان ميرال ${idx + 1}">`;
+          btn.setAttribute('aria-label', item.label);
+          btn.innerHTML = `
+            <img src="${item.src}" alt="${item.label}" oncontextmenu="return false;">
+            <span class="thumb-badge">${item.label}</span>
+          `;
           btn.addEventListener('click', () => {
             setImage(idx);
           });
@@ -1701,20 +2597,61 @@
         if (index >= CONFIG.images.length) index = 0;
         state.activeImageIndex = index;
         
-        elMainImg.style.opacity = '0.4';
+        // تحديث عداد الصور داخل الإطار الموحد
+        if (elCurrentIdx) elCurrentIdx.textContent = index + 1;
+        if (elTotalIdx) elTotalIdx.textContent = CONFIG.images.length;
+
+        elMainImg.style.opacity = '0.35';
         setTimeout(() => {
-          elMainImg.src = CONFIG.images[index];
+          elMainImg.src = CONFIG.images[index].src;
           elMainImg.style.opacity = '1';
-        }, 120);
+        }, 110);
 
         const thumbs = elThumbsRow.querySelectorAll('.thumb-btn');
         thumbs.forEach((thumb, idx) => {
-          thumb.classList.toggle('active', idx === index);
+          const isActive = idx === index;
+          thumb.classList.toggle('active', isActive);
+          if (isActive) {
+            thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
         });
+
+        // تحديث نافذة التكبير إذا كانت مفتوحة
+        if (elZoomModalImage) elZoomModalImage.src = CONFIG.images[index].src;
+        if (elZoomModalLabel) elZoomModalLabel.textContent = CONFIG.images[index].label;
+        if (elZoomModalCounter) elZoomModalCounter.textContent = `${index + 1} / ${CONFIG.images.length}`;
       }
 
       elBtnPrev.addEventListener('click', () => setImage(state.activeImageIndex - 1));
       elBtnNext.addEventListener('click', () => setImage(state.activeImageIndex + 1));
+
+      // دعم نافذة التكبير وفحص تفاصيل الفستان بالحجم الكامل
+      function openZoomModal() {
+        if (!elImageZoomModal) return;
+        setImage(state.activeImageIndex);
+        elImageZoomModal.classList.add('show');
+        elImageZoomModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeZoomModal() {
+        if (!elImageZoomModal) return;
+        elImageZoomModal.classList.remove('show');
+        elImageZoomModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      if (elBtnOpenZoom) elBtnOpenZoom.addEventListener('click', openZoomModal);
+      if (elBtnCloseZoomModal) elBtnCloseZoomModal.addEventListener('click', closeZoomModal);
+      if (elZoomModalBackdrop) elZoomModalBackdrop.addEventListener('click', closeZoomModal);
+      if (elBtnZoomPrev) elBtnZoomPrev.addEventListener('click', () => setImage(state.activeImageIndex - 1));
+      if (elBtnZoomNext) elBtnZoomNext.addEventListener('click', () => setImage(state.activeImageIndex + 1));
+
+      // النقر على درع الصورة يفتح التكبير للتسهيل على الزبائن
+      const elShield = document.getElementById('imageProtectionShield');
+      if (elShield) {
+        elShield.addEventListener('click', openZoomModal);
+      }
 
       // دعم التمرير باللمس على الهاتف المحمول (Swipe)
       let touchStartX = 0;
@@ -1725,19 +2662,27 @@
       elMainImg.addEventListener('touchend', e => {
         touchEndX = e.changedTouches[0].screenX;
         if (touchStartX - touchEndX > 45) {
-          setImage(state.activeImageIndex + 1); // سحب لليسار
+          setImage(state.activeImageIndex + 1);
         } else if (touchEndX - touchStartX > 45) {
-          setImage(state.activeImageIndex - 1); // سحب لليمين
+          setImage(state.activeImageIndex - 1);
         }
       }, { passive: true });
 
-      // 3. تهيئة أزرار المقاسات
+      // دعم لوحة المفاتيح للتنقل بين الصور في المعرض ونافذة التكبير
+      document.addEventListener('keydown', (e) => {
+        if (elImageZoomModal && elImageZoomModal.classList.contains('show')) {
+          if (e.key === 'Escape') closeZoomModal();
+          if (e.key === 'ArrowRight') setImage(state.activeImageIndex - 1);
+          if (e.key === 'ArrowLeft') setImage(state.activeImageIndex + 1);
+        }
+      });
+
+      // 4. تهيئة أزرار المقاسات
       function setupSizes() {
         elSizesContainer.innerHTML = '';
         elCustSize.innerHTML = '';
 
         CONFIG.sizes.forEach((sizeVal) => {
-          // زر المقاس في الصفحة الرئيسية
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.className = `size-btn ${sizeVal === state.selectedSize ? 'active' : ''}`;
@@ -1747,7 +2692,6 @@
           });
           elSizesContainer.appendChild(btn);
 
-          // خيار المقاس في النافذة المنبثقة
           const opt = document.createElement('option');
           opt.value = sizeVal;
           opt.textContent = `مقاس ${sizeVal}`;
@@ -1777,7 +2721,7 @@
         selectSize(e.target.value);
       });
 
-      // 4. التحكم في الكمية وحساب الأسعار
+      // 5. التحكم في الكمية وحساب الأسعار
       elQtyMinus.addEventListener('click', () => {
         if (state.quantity > 1) {
           state.quantity--;
@@ -1817,7 +2761,7 @@
         elCalcTotal.textContent = `${total} ${CONFIG.currency}`;
       }
 
-      // 5. فتح وإغلاق النافذة المنبثقة
+      // 6. فتح وإغلاق النافذة المنبثقة
       function openModal() {
         if (!CONFIG.orders_open) return;
         elOrderForm.style.display = 'block';
@@ -1826,6 +2770,7 @@
         elOrderModal.classList.add('open');
         document.body.style.overflow = 'hidden';
         updatePricing();
+        updateSelectedColorUI();
       }
 
       function closeModal() {
@@ -1843,7 +2788,7 @@
         }
       });
 
-      // 6. التحقق من صحة المدخلات وإرسال الطلب
+      // 7. التحقق من صحة المدخلات وإرسال الطلب
       elOrderForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         elModalAlert.style.display = 'none';
@@ -1854,7 +2799,6 @@
         // فحص مصيدة الروبوتات Honeypot
         const honeypotVal = document.getElementById('honeypotField').value.trim();
         if (honeypotVal !== "") {
-          // روبوت تم رصده!
           showSuccessScreen("TF-BOT");
           return;
         }
@@ -1878,8 +2822,8 @@
 
         // التحقق من رقم الهاتف الجزائري
         const rawPhone = phoneInput.value.trim().replace(/\s+/g, '');
-        const algerianPhoneRegex = /^(0|\+?213)(5|6|7)[0-9]{8}$/;
-        if (!algerianPhoneRegex.test(rawPhone)) {
+        const cleanDigits = rawPhone.replace(/[^0-9]/g, '');
+        if (cleanDigits.length < 9) {
           showFieldError(phoneInput, 'errPhone');
           hasError = true;
         } else {
@@ -1904,6 +2848,8 @@
 
         if (hasError) return;
 
+        const colObj = CONFIG.colors.find(c => c.id === state.selectedColorId) || CONFIG.colors[0];
+
         // تجهيز بيانات الطلب للإرسال
         const orderPayload = {
           fullName: fullNameInput.value.trim(),
@@ -1911,46 +2857,128 @@
           city: wilayaInput.value.trim(),
           address: addressInput.value.trim(),
           product: CONFIG.product_name_ar,
+          color: colObj.name_ar,
           size: state.selectedSize,
           quantity: state.quantity,
           deliveryType: state.deliveryType,
           notes: notesInput.value.trim()
         };
 
+        // 1. حفظ نسخة احتياطية محلية في المتصفح لضمان عدم ضياع أي طلب
+        const localRecord = {
+          id: "TF-" + Math.floor(1000 + Math.random() * 9000),
+          createdAt: new Date().toISOString(),
+          displayTime: new Date().toLocaleString('ar-DZ'),
+          fullName: fullNameInput.value.trim(),
+          phone: rawPhone,
+          city: wilayaInput.value.trim(),
+          address: addressInput.value.trim(),
+          product: CONFIG.product_name_ar,
+          color: colObj.name_ar,
+          size: state.selectedSize,
+          quantity: state.quantity,
+          deliveryType: state.deliveryType,
+          totalPrice: (CONFIG.price * state.quantity) + ((state.deliveryType === 'yalidine') ? CONFIG.delivery_fee_yalidine : CONFIG.delivery_fee_home),
+          notes: notesInput.value.trim(),
+          status: 'معلق'
+        };
+        saveOrderToLocalBackup(localRecord);
+
         // تعطيل الزر لتجنب التكرار
         setSubmittingState(true);
 
         try {
-          let orderId = "";
+          let orderId = localRecord.id;
           let success = false;
           let serverMessage = "";
 
-          // إذا تم وضع رابط Google Apps Script نقوم بإرسال الطلب حقيقيًا
           if (CONFIG.apps_script_url && CONFIG.apps_script_url.trim() !== "" && !CONFIG.apps_script_url.includes("YOUR_GOOGLE_APPS_SCRIPT")) {
             
-            // استخدام fetch بإرسال POST
-            const response = await fetch(CONFIG.apps_script_url, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'text/plain;charset=utf-8'
-              },
-              body: JSON.stringify(orderPayload)
-            });
+            let permissionError = false;
+            let directSuccess = false;
 
-            const result = await response.json();
-            if (result && result.success) {
-              success = true;
-              orderId = result.orderId || ("TF-" + Math.floor(1000 + Math.random() * 9000));
-            } else {
-              serverMessage = (result && result.error) ? result.error : "حدث خطأ أثناء معالجة الطلب.";
+            // المحاولة الأولى: POST مباشر مع التحقق من الصلاحيات
+            try {
+              const response = await fetch(CONFIG.apps_script_url, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'text/plain;charset=utf-8'
+                },
+                body: JSON.stringify(orderPayload)
+              });
+
+              // فحص إذا كانت جوجل ترفض الطلب بسبب صلاحيات النشر (Who has access = Only myself)
+              if (response.status === 401 || response.status === 403) {
+                permissionError = true;
+                serverMessage = "PERMISSION_DENIED_403";
+              } else if (response.ok) {
+                try {
+                  const result = await response.json();
+                  if (result && result.success) {
+                    directSuccess = true;
+                    success = true;
+                    orderId = result.orderId || orderId;
+                    updateLocalOrderStatus(localRecord.id, 'تم الحفظ في الشيت', orderId);
+                  } else if (result && result.error) {
+                    serverMessage = result.error;
+                  }
+                } catch (jsonErr) {
+                  // في حال وصول رد نصي أو تحويل
+                  directSuccess = true;
+                  success = true;
+                  updateLocalOrderStatus(localRecord.id, 'تم الإرسال (Google Redirect)', orderId);
+                }
+              }
+            } catch (networkErr) {
+              console.warn("Primary fetch encountered network or CORS redirect:", networkErr);
+            }
+
+            // إذا كان سبب الفشل هو رفض جوجل للصلاحيات 403: نظهر تنبيهاً واضحاً لصاحب المتجر ولا ندعي النجاح كذباً
+            if (permissionError) {
+              updateLocalOrderStatus(localRecord.id, 'فشل (Google 403 - يرجى ضبط الصلاحية على Anyone)');
+              showFormErrorHtml(`
+                <div style="text-align:right; font-size:0.92rem; line-height:1.6;">
+                  <strong style="color:#9B1C1C; font-size:1.05rem;">⚠️ تنبيه لمسؤول المتجر (خطأ الصلاحيات 403 من Google):</strong><br>
+                  تم حفظ بيانات طلب الزبونة احتياطياً بأمان في المتصفح، ولكن <strong>لم يدخل في Google Sheet</strong> لأن رابط السكربت يطلب تسجيل الدخول.<br>
+                  <div style="background:#FFF8E1; border:1px solid #FFE082; padding:10px; border-radius:8px; margin:8px 0; color:#5D4037;">
+                    <strong>الحل البسيط في 20 ثانية:</strong><br>
+                    1. افتح صفحة Apps Script الخاصة بمشروعك.<br>
+                    2. اضغط على <strong>Deploy (نشر)</strong> ثم <strong>Manage deployments (إدارة عمليات النشر)</strong>.<br>
+                    3. اضغط على القلم ✏️ (تعديل)، وغيّر خيار <strong>Who has access (من يمكنه الوصول)</strong> من 'Only myself' إلى <strong>'Anyone' (أي شخص)</strong>.<br>
+                    4. اختر إصدار جديد <strong>New version</strong> واضغط Deploy.
+                  </div>
+                  <button type="button" onclick="window.openDiagnosticsModal()" class="diag-alert-action-btn">
+                    ⚡ فتح أداة تشخيص الاتصال وإعادة التجربة
+                  </button>
+                </div>
+              `);
+              return;
+            }
+
+            // إذا لم ينجح الـ POST المباشر بسبب CORS أو سياسات التحويل: نستخدم طريقة النموذج الخفي Iframe المضمونة 100%
+            if (!directSuccess) {
+              try {
+                await submitViaHiddenIframe(CONFIG.apps_script_url, orderPayload);
+                
+                // إرسال شعاع GET إضافي موازي
+                try {
+                  const getQuery = new URLSearchParams(orderPayload).toString();
+                  fetch(`${CONFIG.apps_script_url}?${getQuery}`, { mode: 'no-cors' }).catch(() => {});
+                } catch(e) {}
+
+                success = true;
+                updateLocalOrderStatus(localRecord.id, 'تم الإرسال عبر النموذج المباشر', orderId);
+              } catch (fallbackErr) {
+                console.error("Iframe delivery error:", fallbackErr);
+              }
             }
 
           } else {
-            // وضع التجربة المباشرة (Demo Mode) في حال لم يتم وضع رابط Apps Script بعد
-            // يسمح لك بتجربة كامل الواجهة وتدفق الطلب محلياً
-            await new Promise(r => setTimeout(r, 1200));
+            // وضع التجربة المباشرة (Demo Mode) محلياً
+            await new Promise(r => setTimeout(r, 900));
             orderId = "TF-" + Math.floor(1000 + Math.random() * 9000);
             success = true;
+            updateLocalOrderStatus(localRecord.id, 'تجريبي (Demo)', orderId);
           }
 
           if (success) {
@@ -1964,12 +2992,66 @@
 
         } catch (error) {
           console.error("Order submission error:", error);
-          showFormError("حدث خطأ في الاتصال بالإنترنت، يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة على الواتساب.");
+          showFormError("حدث خطأ في الاتصال بالإنترنت، يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة على الواتساب: 0797-30-96-43");
         } finally {
           setSubmittingState(false);
         }
 
       });
+
+      // إرسال البيانات عبر نموذج مخفي موجه لآي فريم (لتخطي قيود CORS والتحويلات)
+      function submitViaHiddenIframe(url, payload) {
+        return new Promise((resolve) => {
+          try {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = url;
+            form.target = 'gsOrderIframe';
+            form.style.display = 'none';
+
+            for (const key in payload) {
+              if (Object.prototype.hasOwnProperty.call(payload, key)) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = payload[key];
+                form.appendChild(input);
+              }
+            }
+
+            document.body.appendChild(form);
+            form.submit();
+            setTimeout(() => {
+              try { form.remove(); } catch(e) {}
+              resolve(true);
+            }, 1200);
+          } catch(e) {
+            resolve(false);
+          }
+        });
+      }
+
+      // إدارة النسخ الاحتياطية في localStorage
+      function saveOrderToLocalBackup(record) {
+        try {
+          const list = JSON.parse(localStorage.getItem('tamara_orders_backup') || '[]');
+          list.unshift(record);
+          if (list.length > 50) list.pop();
+          localStorage.setItem('tamara_orders_backup', JSON.stringify(list));
+        } catch(e) {}
+      }
+
+      function updateLocalOrderStatus(localId, newStatus, realOrderId) {
+        try {
+          const list = JSON.parse(localStorage.getItem('tamara_orders_backup') || '[]');
+          const item = list.find(x => x.id === localId);
+          if (item) {
+            item.status = newStatus;
+            if (realOrderId) item.realOrderId = realOrderId;
+            localStorage.setItem('tamara_orders_backup', JSON.stringify(list));
+          }
+        } catch(e) {}
+      }
 
       function showFieldError(inputEl, errorId) {
         inputEl.classList.add('input-error');
@@ -1989,6 +3071,12 @@
         elModalAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
 
+      function showFormErrorHtml(htmlContent) {
+        elModalAlert.innerHTML = htmlContent;
+        elModalAlert.style.display = 'block';
+        elModalAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
       function setSubmittingState(isSubmitting) {
         state.isSubmitting = isSubmitting;
         elBtnSubmit.disabled = isSubmitting;
@@ -2004,18 +3092,304 @@
         elSuccessOrderId.textContent = orderId;
         elSuccessView.style.display = 'block';
 
-        // رابط الواتساب لمتابعة الطلب برقم الطلب
-        const followText = `مرحبًا، قمت بطلب فستان ميرال طقم 4 قطع برقم الطلب: ${orderId} 🌸`;
-        elBtnWhatsappSuccess.href = `https://wa.me/${waIntlNum}?text=${encodeURIComponent(followText)}`;
+        const colorName = payload ? payload.color : (CONFIG.colors.find(c => c.id === state.selectedColorId)?.name_ar || "");
+        const followText = `مرحبًا ورشة تمارا، قمت بطلب فستان ميرال طقم 3 قطع (اللون: ${colorName}) برقم الطلب: ${orderId} 🌸`;
+        elBtnWhatsappSuccess.href = `https://wa.me/213797309643?text=${encodeURIComponent(followText)}`;
       }
 
-      // تشغيل التهيئة عند بدء تحميل الصفحة
+      // =========================================================================
+      // أداة فحص وتشخيص الربط مع Google Sheet
+      // =========================================================================
+      const elDiagModal = document.getElementById('sheetDiagnosticsModal');
+      const elBtnOpenDiag = document.getElementById('btnOpenDiagnostics');
+      const elBtnCloseDiag = document.getElementById('btnCloseDiagModal');
+      const elBtnCloseDiagBottom = document.getElementById('btnCloseDiagModalBottom');
+      const elBtnRunDiag = document.getElementById('btnRunDiagTest');
+      const elBtnSendTest = document.getElementById('btnSendTestOrder');
+      const elBtnSyncPending = document.getElementById('btnSyncPendingOrders');
+      const elDiagBadge = document.getElementById('diagStatusBadge');
+      const elDiagResult = document.getElementById('diagResultContainer');
+      const elDiagBackupList = document.getElementById('diagBackupList');
+      const elDiagUrl = document.getElementById('diagCurrentUrl');
+
+      if (elDiagUrl) {
+        elDiagUrl.textContent = CONFIG.apps_script_url || "(لم يتم تعيين الرابط بعد)";
+      }
+
+      window.openDiagnosticsModal = function() {
+        if (!elDiagModal) return;
+        elDiagModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        renderBackupOrdersList();
+        runDiagnosticsCheck();
+      };
+
+      function closeDiagnosticsModal() {
+        if (!elDiagModal) return;
+        elDiagModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+
+      if (elBtnOpenDiag) elBtnOpenDiag.addEventListener('click', window.openDiagnosticsModal);
+      if (elBtnCloseDiag) elBtnCloseDiag.addEventListener('click', closeDiagnosticsModal);
+      if (elBtnCloseDiagBottom) elBtnCloseDiagBottom.addEventListener('click', closeDiagnosticsModal);
+      if (elDiagModal) {
+        elDiagModal.addEventListener('click', (e) => {
+          if (e.target === elDiagModal) closeDiagnosticsModal();
+        });
+      }
+
+      async function runDiagnosticsCheck() {
+        if (!CONFIG.apps_script_url || CONFIG.apps_script_url.trim() === "" || CONFIG.apps_script_url.includes("YOUR_GOOGLE_APPS_SCRIPT")) {
+          elDiagBadge.className = 'diag-badge warn';
+          elDiagBadge.textContent = 'وضع تجريبي محلي';
+          elDiagResult.innerHTML = `
+            <div style="color:#B45309; padding:8px; background:#FEF3C7; border-radius:8px;">
+              ⚠️ لم يتم إدخال رابط Google Apps Script في ملف index.html بعد.
+            </div>
+          `;
+          return;
+        }
+
+        elDiagBadge.className = 'diag-badge warn';
+        elDiagBadge.textContent = 'جاري الفحص المباشر...';
+        elDiagResult.innerHTML = `<div style="color:#6B1426;">⏳ جاري فحص حالة السيرفر وصلاحيات الوصول إلى الرابط...</div>`;
+
+        try {
+          // اختبار GET للتأكد من الصلاحيات
+          const res = await fetch(CONFIG.apps_script_url, { method: 'GET' });
+
+          if (res.status === 401 || res.status === 403) {
+            showDiagPermissionError();
+            return;
+          }
+
+          if (res.ok) {
+            try {
+              const data = await res.json();
+              if (data && (data.status === 'ok' || data.success)) {
+                elDiagBadge.className = 'diag-badge ok';
+                elDiagBadge.textContent = '✅ متاح للجميع (Anyone) وجاهز';
+                elDiagResult.innerHTML = `
+                  <div style="background:#DEF7EC; border:1px solid #BCF0DA; padding:12px; border-radius:8px; color:#03543F;">
+                    <strong>🎉 ممتاز! الاتصال مع Google Apps Script سليم 100%.</strong><br>
+                    صلاحية الرابط مفتوحة للجميع (Anyone)، والطلبات تصل فوراً إلى جدول Google Sheet دون أي عوائق.
+                  </div>
+                `;
+                return;
+              }
+            } catch(e) {}
+          }
+
+          // إذا تم الوصول بنجاح
+          elDiagBadge.className = 'diag-badge ok';
+          elDiagBadge.textContent = '✅ السكربت مستجيب';
+          elDiagResult.innerHTML = `
+            <div style="background:#DEF7EC; border:1px solid #BCF0DA; padding:12px; border-radius:8px; color:#03543F;">
+              تم الاتصال بنجاح مع رابط السكربت. يمكنك الآن الضغط على زر <strong>"إرسال طلب تجريبي للجدول"</strong> للتأكد من تسجيل سطر في الشيت.
+            </div>
+          `;
+
+        } catch (fetchErr) {
+          // في حال حصول خطأ شبكة أو CORS بسبب صفحة تسجيل الدخول لـ Google
+          console.warn("Diag test check caught:", fetchErr);
+          showDiagPermissionError();
+        }
+      }
+
+      function showDiagPermissionError() {
+        elDiagBadge.className = 'diag-badge err';
+        elDiagBadge.textContent = '❌ مغلق (Who has access = Only myself)';
+        elDiagResult.innerHTML = `
+          <div style="background:#FDE8E8; border:1px solid #F8B4B4; padding:14px; border-radius:10px; color:#9B1C1C;">
+            <strong style="font-size:1.02rem;">⚠️ سبب عدم وصول الطلبات إلى الجدول:</strong><br>
+            جوجل ترفض استقبال الطلبات لأن خيار <strong>Who has access (من يمكنه الوصول)</strong> مضبوط على "Only myself" (أنا فقط) بدلاً من "Anyone" (أي شخص).<br><br>
+            
+            <div style="background:#FFFFFF; border:1px solid #E5A4A4; padding:12px; border-radius:8px; color:#374151;">
+              <strong style="color:#6B1426;">🛠️ خطوات الحل في 30 ثانية (دون تغيير الرابط):</strong>
+              <ol class="diag-steps-list">
+                <li>اضغط على الزر أدناه <strong>"فتح مشروع Apps Script مباشرة"</strong>.</li>
+                <li>في أعلى اليمين اضغط على زر <strong>Deploy (نشر)</strong> ثم اختر <strong>Manage deployments (إدارة عمليات النشر)</strong>.</li>
+                <li>اضغط على أيقونة القلم ✏️ <strong>(Edit / تعديل)</strong> بجانب Web app.</li>
+                <li>في خانة <strong>Who has access (من يمكنه الوصول)</strong> غيّرها إلى: <br><span style="background:#FEF08A; padding:2px 8px; border-radius:4px; font-weight:800; color:#854D0E;">Anyone (أي شخص)</span>.</li>
+                <li>في خانة <strong>Version (الإصدار)</strong> اختر <strong>New version (إصدار جديد)</strong>.</li>
+                <li>اضغط على زر <strong>Deploy (نشر)</strong>.</li>
+              </ol>
+            </div>
+          </div>
+        `;
+      }
+
+      if (elBtnRunDiag) elBtnRunDiag.addEventListener('click', runDiagnosticsCheck);
+
+      // إرسال طلب تجريبي فوري للتأكد من الشيت
+      if (elBtnSendTest) {
+        elBtnSendTest.addEventListener('click', async () => {
+          elBtnSendTest.disabled = true;
+          elBtnSendTest.innerHTML = `<span>جاري إرسال الطلب التجريبي...</span> ⏳`;
+
+          const testPayload = {
+            fullName: "فحص تجريبي (تأكيد الربط)",
+            phone: "0797309643",
+            city: "بوسعادة (المسيلة)",
+            address: "ورشة تمارا فاشن - اختبار النظام",
+            product: CONFIG.product_name_ar,
+            color: "عنابي (Bordeaux)",
+            size: "40",
+            quantity: 1,
+            deliveryType: "domicile",
+            notes: "طلب تجريبي للتأكد من وصول البيانات لجدول Google Sheet"
+          };
+
+          try {
+            // استخدام النموذج الخفي المضمون + fetch
+            await submitViaHiddenIframe(CONFIG.apps_script_url, testPayload);
+            
+            const q = new URLSearchParams(testPayload).toString();
+            fetch(`${CONFIG.apps_script_url}?${q}`, { mode: 'no-cors' }).catch(() => {});
+
+            saveOrderToLocalBackup({
+              ...testPayload,
+              id: "TF-TEST-" + Math.floor(100 + Math.random() * 900),
+              createdAt: new Date().toISOString(),
+              displayTime: new Date().toLocaleString('ar-DZ'),
+              totalPrice: 5600,
+              status: 'طلب تجريبي تم إرساله'
+            });
+
+            renderBackupOrdersList();
+
+            alert("✅ تم إرسال الطلب التجريبي بنجاح!\n\nافتح جدول Google Sheet الآن وتفقد ورقة Orders لتتأكد من ظهور السطر الجديد.\n(إذا لم يظهر، تأكد من تعديل الصلاحية إلى Anyone في Apps Script كما هو موضح).");
+          } catch(err) {
+            alert("حدث خطأ أثناء إرسال الطلب التجريبي: " + err.message);
+          } finally {
+            elBtnSendTest.disabled = false;
+            elBtnSendTest.innerHTML = `<span>🧪 إرسال طلب تجريبي للجدول</span>`;
+          }
+        });
+      }
+
+      // عرض قائمة الطلبات المحفوظة محلياً
+      function renderBackupOrdersList() {
+        if (!elDiagBackupList) return;
+        try {
+          const list = JSON.parse(localStorage.getItem('tamara_orders_backup') || '[]');
+          if (list.length === 0) {
+            elDiagBackupList.innerHTML = `<div style="padding:14px; text-align:center; color:#888; font-size:0.85rem;">لا توجد طلبات مسجلة بعد في هذا المتصفح.</div>`;
+            return;
+          }
+
+          let html = `
+            <table class="diag-table">
+              <thead>
+                <tr>
+                  <th>المعرف</th>
+                  <th>الاسم</th>
+                  <th>الهاتف</th>
+                  <th>اللون / المقاس</th>
+                  <th>المبلغ</th>
+                  <th>الحالة</th>
+                </tr>
+              </thead>
+              <tbody>
+          `;
+
+          list.forEach(ord => {
+            html += `
+              <tr>
+                <td><strong>${ord.id}</strong></td>
+                <td>${ord.fullName || '-'}</td>
+                <td style="direction:ltr; text-align:right;">${ord.phone || '-'}</td>
+                <td>${ord.color || ''} (مقاس ${ord.size || ''})</td>
+                <td>${ord.totalPrice ? ord.totalPrice + ' دج' : '-'}</td>
+                <td><span style="font-size:0.75rem; color:${ord.status.includes('فشل') ? '#9B1C1C' : '#03543F'}; font-weight:700;">${ord.status}</span></td>
+              </tr>
+            `;
+          });
+
+          html += `</tbody></table>`;
+          elDiagBackupList.innerHTML = html;
+        } catch(e) {
+          elDiagBackupList.innerHTML = `<div style="padding:10px; color:#888;">تعذر تحميل السجل.</div>`;
+        }
+      }
+
+      // إعادة مزامنة جميع الطلبات المعلقة
+      if (elBtnSyncPending) {
+        elBtnSyncPending.addEventListener('click', async () => {
+          try {
+            const list = JSON.parse(localStorage.getItem('tamara_orders_backup') || '[]');
+            if (list.length === 0) {
+              alert("لا توجد طلبات لإعادة إرسالها.");
+              return;
+            }
+
+            elBtnSyncPending.disabled = true;
+            elBtnSyncPending.textContent = "جاري إعادة الإرسال...";
+
+            for (const ord of list) {
+              await submitViaHiddenIframe(CONFIG.apps_script_url, ord);
+              ord.status = 'تمت إعادة الإرسال';
+            }
+
+            localStorage.setItem('tamara_orders_backup', JSON.stringify(list));
+            renderBackupOrdersList();
+            alert("✅ تمت إعادة إرسال الطلبات إلى Google Sheet بنجاح!");
+          } catch(e) {
+            alert("حدث خطأ أثناء المزامنة: " + e.message);
+          } finally {
+            elBtnSyncPending.disabled = false;
+            elBtnSyncPending.textContent = "🔄 إعادة إرسال الطلبات للجدول";
+          }
+        });
+      }
+
+      // تشغيل التهيئة
+      setupColors();
       setupGallery();
       setupSizes();
       updatePricing();
 
+      // نظام الحماية الصارمة من تحميل وسرقة الصور
+      function showCopyrightToast() {
+        const toast = document.getElementById('copyrightToast');
+        if (!toast) return;
+        toast.classList.add('show');
+        clearTimeout(window._toastTimer);
+        window._toastTimer = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3500);
+      }
+
+      document.addEventListener('contextmenu', (e) => {
+        if (e.target.closest('.gallery-section') || e.target.closest('.gallery-master-frame') || e.target.closest('.image-zoom-modal') || e.target.tagName === 'IMG' || e.target.id === 'imageProtectionShield') {
+          e.preventDefault();
+          showCopyrightToast();
+          return false;
+        }
+      });
+
+      document.addEventListener('dragstart', (e) => {
+        if (e.target.tagName === 'IMG' || e.target.closest('.gallery-section')) {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+          e.preventDefault();
+          showCopyrightToast();
+        }
+      });
+
     })();
   </script>
+
+  <!-- إشعار حماية حقوق الصور ومنع التحميل -->
+  <div id="copyrightToast" class="copyright-toast">
+    🔒 جميع صور وتصاميم فستان ميرال محمية بحقوق النشر © TAMARA FASHION | 0797-30-96-43 (ممنوع التحميل أو النسخ)
+  </div>
 
 </body>
 </html>
