@@ -1790,12 +1790,18 @@
 
       // 8. صور المنتج الحقيقية المرفقة (الصورة الرئيسية IMG_0108.jpg وإطار موحد مربع قياسي)
       images: [
-        { src: "./images/IMG_0106.jpg", label: "عنابي (Bordeaux) - الصورة الرئيسية الملكية" },
-        { src: "./images/IMG_0107.jpg", label: "عنابي (Bordeaux) - طقم 3 قطع" },
-        { src: "./images/IMG_0108.JPG", label: "بيج (Beige) - طقم 3 قطع" },
-        { src: "./images/IMG_0109.JPG", label: "بلون كاسي (Blanc Cassé) - طقم 3 قطع" },
-        { src: "./images/IMG_0110.jpg", label: "عنابي (Bordeaux) - تفاصيل الطقم"},
-        { src: "./images/IMG_0111.jpg", label: "عنابي (Bordeaux) - تفاصيل الطقم"}
+        { src: "./images/IMG_0108.jpg", label: "عنابي (Bordeaux) - الصورة الرئيسية الملكية" },
+        { src: "./images/IMG_0106.jpg", label: "عنابي (Bordeaux) - طقم 3 قطع" },
+        { src: "./images/IMG_0111.JPG", label: "بيج (Beige) - طقم 3 قطع" },
+        { src: "./images/IMG_0110.JPG", label: "بلون كاسي (Blanc Cassé) - طقم 3 قطع" },
+        { src: "./images/IMG_0107.jpg", label: "عنابي (Bordeaux) - تفاصيل الطقم" },
+        { src: "./images/IMG_0109.jpg.jpg", label: "عنابي (Bordeaux) - الطقم الكامل" },
+        { src: "./images/IMG_0112.JPG", label: "تفاصيل الدونتال وأزرار اللؤلؤ" },
+        { src: "./images/IMG_0113.JPG", label: "بلون كاسي - الروب والحزام والربطة" },
+        { src: "./images/IMG_0114.JPG", label: "بيج - الروب والحزام والربطة" },
+        { src: "./images/IMG_0115.JPG", label: "تفاصيل الصدرية والأكمام" },
+        { src: "./images/IMG_0116.JPG", label: "عنابي - تناسق القطع والأكمام" },
+        { src: "./images/IMG_0117.JPG", label: "الألوان وتناسق الطقم" }
       ]
     };
   </script>
@@ -1851,7 +1857,7 @@
           
           <!-- منطقة عرض الصورة بالكامل دون أي قص أو حجب للتصميم -->
           <div class="gallery-image-viewport">
-            <img id="mainProductImage" src="./images/IMG_0106.jpg" alt="فستان ميرال قطيفة طقم كامل 3 قطع - TAMARA FASHION" class="main-image" oncontextmenu="return false;">
+            <img id="mainProductImage" src="./images/IMG_0108.jpg" alt="فستان ميرال قطيفة طقم كامل 3 قطع - TAMARA FASHION" class="main-image" oncontextmenu="return false;">
           </div>
           
           <!-- زر تكبير الصورة بالحجم الكامل -->
@@ -1866,7 +1872,7 @@
 
           <!-- عداد الصور داخل الإطار القياسي -->
           <div class="gallery-image-counter">
-            <span id="galleryCurrentIdx">1</span> / <span id="galleryTotalIdx">7</span>
+            <span id="galleryCurrentIdx">1</span> / <span id="galleryTotalIdx">12</span>
           </div>
 
           <!-- أزرار التنقل بين الصور -->
@@ -3179,9 +3185,9 @@
           elDiagBadge.className = 'diag-badge ok';
           elDiagBadge.textContent = '✅ السكربت مستجيب';
           elDiagResult.innerHTML = `
-            # <div style="background:#DEF7EC; border:1px solid #BCF0DA; padding:12px; border-radius:8px; color:#03543F;">
-             #  تم الاتصال بنجاح مع رابط السكربت. يمكنك الآن الضغط على زر <strong>"إرسال طلب تجريبي للجدول"</strong> للتأكد من تسجيل سطر في الشيت.
-            //#//</div>##
+            <div style="background:#DEF7EC; border:1px solid #BCF0DA; padding:12px; border-radius:8px; color:#03543F;">
+              تم الاتصال بنجاح مع رابط السكربت. يمكنك الآن الضغط على زر <strong>"إرسال طلب تجريبي للجدول"</strong> للتأكد من تسجيل سطر في الشيت.
+            </div>
           `;
 
         } catch (fetchErr) {
@@ -3222,18 +3228,18 @@
           elBtnSendTest.disabled = true;
           elBtnSendTest.innerHTML = `<span>جاري إرسال الطلب التجريبي...</span> ⏳`;
 
-          # const testPayload = {
-            #fullName: "فحص تجريبي (تأكيد الربط)",
-            #phone: "0797309643",
-            #city: "بوسعادة (المسيلة)",
-            #address: "ورشة تمارا فاشن - اختبار النظام",
-            #product: CONFIG.product_name_ar,
-            #color: "عنابي (Bordeaux)",
-            #size: "40",
-            #quantity: 1,
-            #deliveryType: "domicile",
-            #notes: "طلب تجريبي للتأكد من وصول البيانات لجدول Google Sheet"
-          #};
+          const testPayload = {
+            fullName: "فحص تجريبي (تأكيد الربط)",
+            phone: "0797309643",
+            city: "بوسعادة (المسيلة)",
+            address: "ورشة تمارا فاشن - اختبار النظام",
+            product: CONFIG.product_name_ar,
+            color: "عنابي (Bordeaux)",
+            size: "40",
+            quantity: 1,
+            deliveryType: "domicile",
+            notes: "طلب تجريبي للتأكد من وصول البيانات لجدول Google Sheet"
+          };
 
           try {
             // استخدام النموذج الخفي المضمون + fetch
